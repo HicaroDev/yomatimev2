@@ -1,26 +1,50 @@
 @import "tailwindcss";
 
-/* Tokens provisórios — paleta terrosa (serão refinados na F1) */
-:root {
-  --linen: #f4efe7;
-  --sand: #e6dccd;
-  --clay: #b5714f;
-  --sage: #8a9a82;
-  --ink: #2b2622;
+/* Tokens das três versões. Base comum: menta da logo #b8d4c6. */
+@theme {
+  --color-menta: #b8d4c6;
+  --color-menta-scura: #4f7a67; /* menta com contraste AA sobre claro */
+
+  /* V1 · Luce */
+  --color-lino: #f6f2eb;
+  --color-sabbia: #ebe3d6;
+  --color-legno: #c49a6c;
+  --color-inchiostro: #25302b;
+
+  /* V2 · Respiro */
+  --color-eucalipto: #15302a;
+  --color-eucalipto-2: #1e3d35;
+  --color-crema: #efe9df;
+
+  /* V3 · Radiate */
+  --color-carta: #fbfaf6;
+  --color-nero: #141414;
+  --color-terra: #d4704a;
+  --color-sole: #e2b24a;
+  --color-cielo: #7f9ec6;
+  --color-rosa: #dca9c0;
 }
 
-@theme inline {
-  --color-linen: var(--linen);
-  --color-sand: var(--sand);
-  --color-clay: var(--clay);
-  --color-sage: var(--sage);
-  --color-ink: var(--ink);
-  --font-serif: var(--font-serif);
-  --font-sans: var(--font-sans);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-body {
-  background: var(--linen);
-  color: var(--ink);
-  font-family: var(--font-sans), system-ui, sans-serif;
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@keyframes scorri {
+  to {
+    transform: translateX(-50%);
+  }
 }

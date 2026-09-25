@@ -13,9 +13,20 @@ Peso de cada fase entre parênteses (soma = 100).
 - [x] 0.3 Cérebro do projeto no Obsidian
 - [x] 0.4 Esta lista de tasks
 
+## ★ Sprint atual — 3 versões para escolher (pedido 25/09, 23:20)
+- [x] A.1 Repo no GitHub + projeto na Vercel conectado
+- [x] A.2 Logo transparente (clara/escura), cor da marca menta `#b8d4c6`, 19 fotos otimizadas
+- [x] A.3 Conteúdo único em `src/content/yoma.ts` (textos reais, preços, contatos)
+- [x] A.4 Home seletora: V1 · V2 · V3
+- [x] A.5 **V1 "Luce"** — editorial claro, serifa, molduras em arco (janelas do estúdio), menta + linho
+- [x] A.6 **V2 "Respiro"** — imersivo escuro, verde-eucalipto + menta, fotos em tela cheia
+- [x] A.7 **V3 "Radiate"** — grade suíça, tipografia forte, menta + cores do "Radiate Positivity"
+- [x] A.8 Build + teste celular/desktop + push → deploy Vercel
+- [ ] A.9 Avisar no Telegram com os links
+
 ## 1. Conteúdo e marca (12)
-- [ ] 1.1 Extrair todos os textos das páginas atuais (Home, Lo Studio, Corsi, Reformer, Massaggi, Galleria, Contatti)
-- [ ] 1.2 Baixar fotos e logo atuais (provisórios)
+- [x] 1.1 Extrair todos os textos das páginas atuais (Home, Lo Studio, Corsi, Reformer, Massaggi, Galleria, Contatti)
+- [x] 1.2 Baixar fotos e logo atuais (provisórios)
 - [ ] 1.3 Pedir à Kristina: fotos novas, logo em vetor, grade de horários
 - [ ] 1.4 Você gera o mockup e me apresenta
 - [ ] 1.5 Definir paleta, fontes e tokens (anti-cara-de-IA)
@@ -68,4 +79,4 @@ Peso de cada fase entre parênteses (soma = 100).
 
 ---
 
-**Progresso: 5 %**
+**Progresso: 30 %** — 3 versões no ar para escolha (25/09)

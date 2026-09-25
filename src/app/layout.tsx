@@ -1,29 +1,19 @@
-import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
-const serif = Cormorant_Garamond({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-});
-
-const sans = Manrope({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "YOMATIME — Il tempo per te",
+  title: "YomaTime — Il tempo per te",
   description:
-    "Yoga, Pilates Reformer e Massaggi a Lumino. Uno spazio in cui ti dedichi del tempo.",
+    "Yoga, Pilates Reformer e Massaggi a Lumino (Ticino). Uno spazio in cui ti dedichi del tempo.",
+  icons: { icon: "/img/logo.png" },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export const viewport: Viewport = { width: "device-width", initialScale: 1 };
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it" className={`${serif.variable} ${sans.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="it" className="h-full antialiased scroll-smooth">
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
