@@ -22,7 +22,7 @@ Peso de cada fase entre parênteses (soma = 100).
 - [x] A.6 **V2 "Respiro"** — imersivo escuro, verde-eucalipto + menta, fotos em tela cheia
 - [x] A.7 **V3 "Radiate"** — grade suíça, tipografia forte, menta + cores do "Radiate Positivity"
 - [x] A.8 Build + teste celular/desktop + push → deploy Vercel
-- [ ] A.9 Avisar no Telegram com os links
+- [x] A.9 Avisar no Telegram com os links
 
 ## 1. Conteúdo e marca (12)
 - [x] 1.1 Extrair todos os textos das páginas atuais (Home, Lo Studio, Corsi, Reformer, Massaggi, Galleria, Contatti)
