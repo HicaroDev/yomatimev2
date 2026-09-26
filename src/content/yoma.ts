@@ -220,11 +220,15 @@ export const eventi = [
 ];
 
 export const galleria = [
+  { src: "/img/studio-lezione-reformer.jpg", alt: "Lezione di Pilates Reformer nello studio", w: 1350, h: 1800 },
   { src: "/img/studio-sala.jpg", alt: "La sala dello studio con le finestre ad arco", w: 1200, h: 1600 },
+  { src: "/img/kristina-ritratto.jpg", alt: "Kristina Dendena", w: 1080, h: 1632 },
+  { src: "/img/studio-reformer-2.jpg", alt: "I Reformer sotto le finestre ad arco", w: 1350, h: 1800 },
   { src: "/img/studio-verticale.jpg", alt: "Verticale sul tappetino nello studio", w: 1600, h: 1200 },
-  { src: "/img/studio-reformer.jpg", alt: "I Reformer dello studio", w: 1800, h: 1350 },
+  { src: "/img/studio-reformer-3.jpg", alt: "Reformer con la palla rosa e il quadro Radiate Positivity", w: 1350, h: 1800 },
   { src: "/img/studio-sala-2.jpg", alt: "Reformer e box in legno chiaro", w: 1200, h: 1600 },
   { src: "/img/studio-yoga-bimbi.jpg", alt: "Yoga per bambini nello studio", w: 765, h: 566 },
+  { src: "/img/studio-reformer.jpg", alt: "I Reformer dello studio", w: 1800, h: 1350 },
   { src: "/img/yoga-lago.jpg", alt: "Yoga in riva al lago", w: 1800, h: 1200 },
 ];
 
