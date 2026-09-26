@@ -19,7 +19,7 @@ export default function PrezziTabs() {
             aria-controls={`pannello-${l.id}`}
             onClick={() => setAttivo(l.id)}
             className={`-mb-px min-h-11 cursor-pointer border-b-2 pb-3 font-[family-name:var(--font-cormorant)] text-2xl transition-colors duration-200 ${
-              attivo === l.id ? "border-menta-scura text-inchiostro" : "border-transparent text-inchiostro/50 hover:text-inchiostro"
+              attivo === l.id ? "border-menta-scura text-inchiostro" : "border-transparent text-inchiostro/70 hover:text-inchiostro"
             }`}
           >
             {l.titolo}
@@ -32,14 +32,14 @@ export default function PrezziTabs() {
           <li key={v.nome} className="flex items-baseline gap-3 border-b border-dotted border-inchiostro/20 py-4">
             <span className="flex-1">
               <span className="block text-base">{v.nome}</span>
-              <span className="text-sm text-inchiostro/60">{v.nota}</span>
+              <span className="text-sm text-inchiostro/75">{v.nota}</span>
             </span>
             <span className="font-[family-name:var(--font-cormorant)] text-3xl lining-nums tabular-nums">
               {v.prezzo === "gratis" ? (
                 <em>gratis</em>
               ) : (
                 <>
-                  <span className="mr-1 align-top font-[family-name:var(--font-manrope)] text-sm text-inchiostro/60">CHF</span>
+                  <span className="mr-1 align-top font-[family-name:var(--font-manrope)] text-sm text-inchiostro/75">CHF</span>
                   {v.prezzo}
                 </>
               )}

@@ -15,7 +15,7 @@ import {
   whatsappMsg,
 } from "@/content/yoma";
 import { ArrowRight, Facebook, Instagram, Mail, Menu, Phone, Pin, WhatsApp } from "@/components/icons";
-import { cormorant, manrope } from "../fonts";
+import { cormorant, manrope, pinyon } from "../fonts";
 import PrezziTabs from "./PrezziTabs";
 
 export const metadata: Metadata = { title: "YomaTime · V1 Luce" };
@@ -29,7 +29,7 @@ function Etichetta({ children }: { children: React.ReactNode }) {
 
 export default function V1() {
   return (
-    <div className={`${cormorant.variable} ${manrope.variable} bg-lino font-[family-name:var(--font-manrope)] text-inchiostro`}>
+    <div className={`${cormorant.variable} ${manrope.variable} ${pinyon.variable} bg-lino font-[family-name:var(--font-manrope)] text-inchiostro`}>
       <a href="#contenuto" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:p-2">
         Vai al contenuto
       </a>
@@ -83,6 +83,14 @@ export default function V1() {
           </div>
         </div>
       </header>
+
+      {/* Botão de reserva sempre visível */}
+      <a
+        href={whatsappMsg("Ciao Kristina, vorrei prenotare")}
+        className="fixed bottom-5 right-4 z-30 flex min-h-12 items-center gap-2 rounded-full bg-inchiostro px-5 text-sm text-lino shadow-lg shadow-inchiostro/25 transition-colors hover:bg-menta-scura sm:right-8"
+      >
+        <WhatsApp className="size-5" /> Prenota
+      </a>
 
       <main id="contenuto">
         {/* Hero */}
@@ -162,7 +170,7 @@ export default function V1() {
                     <Image src={d.immagine} alt={d.alt} fill sizes="(min-width:768px) 40vw, 100vw" className="object-cover" />
                   </div>
                   <div className={`md:col-span-6 ${i % 2 ? "md:order-1" : "md:col-start-7"}`}>
-                    <p className={`${serif} text-6xl text-menta`}>{romani[i]}</p>
+                    <p aria-hidden className={`${serif} text-6xl text-menta`}>{romani[i]}</p>
                     <h3 className={`${serif} mt-2 text-4xl sm:text-5xl`}>{d.nome}</h3>
                     <p className="mt-2 text-sm uppercase tracking-[0.2em] text-menta-scura">{d.sottotitolo}</p>
                     <p className="mt-6 max-w-lg text-lg leading-relaxed">{d.testo}</p>
@@ -222,6 +230,7 @@ export default function V1() {
               ))}
             </div>
             <p className={`${serif} mt-8 text-4xl italic text-menta-scura`}>“{kristina.motto}”</p>
+            <p className="mt-6 font-[family-name:var(--font-pinyon)] text-5xl leading-none sm:text-6xl">{kristina.nome}</p>
           </div>
         </section>
 
@@ -271,7 +280,9 @@ export default function V1() {
       <footer id="contatti" className="scroll-mt-20 bg-menta/40">
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-8 md:grid-cols-12">
           <div className="md:col-span-5">
-            <Image src="/img/logo.png" alt="YomaTime — il tempo per te" width={140} height={140} />
+            <div className="inline-flex rounded-full bg-lino p-3 shadow-sm">
+              <Image src="/img/logo.png" alt="YomaTime — il tempo per te" width={128} height={128} />
+            </div>
             <p className={`${serif} mt-6 text-3xl italic`}>Uno spazio in cui ti dedichi del tempo.</p>
           </div>
           <ul className="space-y-2 text-base md:col-span-6 md:col-start-7">
@@ -305,7 +316,7 @@ export default function V1() {
             </li>
           </ul>
         </div>
-        <p className="border-t border-inchiostro/10 px-4 py-6 text-center text-xs text-inchiostro/70">
+        <p className="border-t border-inchiostro/10 px-4 pb-24 pt-6 text-center text-xs text-inchiostro/70 sm:pb-6">
           © 2026 YomaTime · {contatti.titolare} ·{" "}
           <Link href="/" className="underline">
             tutte le proposte

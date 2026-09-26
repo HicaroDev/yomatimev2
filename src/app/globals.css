@@ -3,7 +3,7 @@
 /* Tokens das três versões. Base comum: menta da logo #b8d4c6. */
 @theme {
   --color-menta: #b8d4c6;
-  --color-menta-scura: #4f7a67; /* menta com contraste AA sobre claro */
+  --color-menta-scura: #3f6653; /* menta com contraste AA (≥5:1) sobre claro */
 
   /* V1 · Luce */
   --color-lino: #f6f2eb;
@@ -20,7 +20,7 @@
   --color-avorio: #faf7f2;
   --color-champagne: #ecdfca;
   --color-cipria: #dcbcb1;
-  --color-salvia: #7b988a;
+  --color-salvia: #56705f; /* ≥5:1 sobre avorio */
   --color-oro: #b39668;
   --color-notte: #2d2a26;
 }

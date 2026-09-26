@@ -26,6 +26,8 @@ Peso de cada fase entre parênteses (soma = 100).
 - [x] A.10 Texto-fonte para apresentação no NotebookLM (`apresentacao/`)
 - [x] A.12 Fotos reais da biblioteca de mídia dela na galeria + nova foto da Kristina
 - [ ] A.13 Avaliações reais (link Google Business ou 3–5 depoimentos) → seção "Dicono di noi"
+- [x] A.14 Selfies removidas (pedido 26/09); V1 com botão Prenota fixo + assinatura manuscrita
+- [x] A.15 Skill `/yoma-qa` criada e rodada: 13 telas × 3 viewports sem alertas + 16/16 testes de interação
 - [ ] A.11 Kristina escolhe a versão (V1 e V2 aprovadas pelo Hícaro, não mexer)
 
 ## 1. Conteúdo e marca (12)
@@ -69,10 +71,10 @@ Peso de cada fase entre parênteses (soma = 100).
 - [ ] 5.5 Lighthouse ≥ 95 no celular
 
 ## 6. QA e design (15)
-- [ ] 6.1 Criar skill `yoma-qa` (baseada no `fatto-qa`)
+- [x] 6.1 Criar skill `yoma-qa` (baseada no `fatto-qa`)
 - [ ] 6.2 Criar skill `yoma-designer` (baseada no `fatto-designer`)
-- [ ] 6.3 Rodada de QA celular + desktop
-- [ ] 6.4 Correções da rodada
+- [x] 6.3 Rodada de QA celular + desktop
+- [x] 6.4 Correções da rodada
 - [ ] 6.5 Revisão com você e com a cliente
 
 ## 7. Lançamento (10)

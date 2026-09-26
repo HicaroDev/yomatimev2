@@ -204,7 +204,7 @@ export default function V2() {
                         <tr key={v.nome} className="border-t border-eucalipto/10">
                           <th scope="row" className="py-3 pr-4 font-normal">
                             {v.nome}
-                            <span className="block text-sm text-eucalipto/60">{v.nota}</span>
+                            <span className="block text-sm text-eucalipto/75">{v.nota}</span>
                           </th>
                           <td className="py-3 text-right text-xl tabular-nums">{v.prezzo === "gratis" ? "gratis" : v.prezzo}</td>
                         </tr>

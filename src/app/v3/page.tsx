@@ -51,7 +51,7 @@ export default function V3() {
       <header className="fixed inset-x-0 top-0 z-40 border-b border-oro/25 bg-avorio/75 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-8">
           <Link href="#" aria-label="YomaTime, inizio pagina" className="flex items-center gap-3">
-            <Image src="/img/logo.png" alt="" width={42} height={42} priority />
+            <Image src="/img/logo.png" alt="" width={44} height={44} priority />
           </Link>
           <nav aria-label="Principale" className="hidden lg:block">
             <ul className="flex gap-9 text-[0.72rem] uppercase tracking-[0.28em]">
