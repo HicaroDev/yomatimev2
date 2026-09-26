@@ -220,7 +220,7 @@ export default function V3() {
                 <Image src="/img/kristina.jpg" alt="Kristina Dendena" fill sizes="160px" className="object-cover" />
               </div>
             </Parallax>
-            <article className="border border-oro/40 bg-avorio px-6 pb-14 pt-28 shadow-2xl shadow-notte/10 sm:px-16 sm:pt-16">
+            <article className="border border-oro/40 bg-avorio px-6 pb-14 pt-28 shadow-2xl shadow-notte/10 sm:px-16 sm:pt-28">
               <p className={occhiello}>{kristina.ruolo}</p>
               <h2 id="t-kristina" className={`${firma} mt-6 text-5xl sm:text-6xl`}>
                 Cara amica,
