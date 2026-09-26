@@ -24,6 +24,8 @@ Peso de cada fase entre parênteses (soma = 100).
 - [x] A.8 Build + teste celular/desktop + push → deploy Vercel
 - [x] A.9 Avisar no Telegram com os links
 - [x] A.10 Texto-fonte para apresentação no NotebookLM (`apresentacao/`)
+- [x] A.12 Fotos reais da biblioteca de mídia dela na galeria + nova foto da Kristina
+- [ ] A.13 Avaliações reais (link Google Business ou 3–5 depoimentos) → seção "Dicono di noi"
 - [ ] A.11 Kristina escolhe a versão (V1 e V2 aprovadas pelo Hícaro, não mexer)
 
 ## 1. Conteúdo e marca (12)
