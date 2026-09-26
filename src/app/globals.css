@@ -16,13 +16,13 @@
   --color-eucalipto-2: #1e3d35;
   --color-crema: #efe9df;
 
-  /* V3 · Radiate */
-  --color-carta: #fbfaf6;
-  --color-nero: #141414;
-  --color-terra: #d4704a;
-  --color-sole: #e2b24a;
-  --color-cielo: #7f9ec6;
-  --color-rosa: #dca9c0;
+  /* V3 · Firma */
+  --color-avorio: #faf7f2;
+  --color-champagne: #ecdfca;
+  --color-cipria: #dcbcb1;
+  --color-salvia: #7b988a;
+  --color-oro: #b39668;
+  --color-notte: #2d2a26;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -41,10 +41,4 @@
 :focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 3px;
-}
-
-@keyframes scorri {
-  to {
-    transform: translateX(-50%);
-  }
 }

@@ -20,9 +20,11 @@ Peso de cada fase entre parênteses (soma = 100).
 - [x] A.4 Home seletora: V1 · V2 · V3
 - [x] A.5 **V1 "Luce"** — editorial claro, serifa, molduras em arco (janelas do estúdio), menta + linho
 - [x] A.6 **V2 "Respiro"** — imersivo escuro, verde-eucalipto + menta, fotos em tela cheia
-- [x] A.7 **V3 "Radiate"** — grade suíça, tipografia forte, menta + cores do "Radiate Positivity"
+- [x] A.7 ~~V3 "Radiate"~~ (reprovada 26/09: "linha game/anime") → **V3 "Firma"**: logo recriado com "time" manuscrito, Bodoni + script, fundo aura (menta/sálvia/champanhe/rosa), parallax
 - [x] A.8 Build + teste celular/desktop + push → deploy Vercel
 - [x] A.9 Avisar no Telegram com os links
+- [x] A.10 Texto-fonte para apresentação no NotebookLM (`apresentacao/`)
+- [ ] A.11 Kristina escolhe a versão (V1 e V2 aprovadas pelo Hícaro, não mexer)
 
 ## 1. Conteúdo e marca (12)
 - [x] 1.1 Extrair todos os textos das páginas atuais (Home, Lo Studio, Corsi, Reformer, Massaggi, Galleria, Contatti)

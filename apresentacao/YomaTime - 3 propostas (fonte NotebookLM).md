@@ -77,53 +77,53 @@
 
 ---
 
-## 4. Proposta V3 — "Radiate"
+## 4. Proposta V3 — "Firma" (Assinatura)
 
 **Link:** https://yomatimev2.vercel.app/v3
 
-**A essência.** Energia positiva com personalidade. Gráfica, solar, contemporânea, com humor. É a proposta que mais se parece com **o quadro "Radiate Positivity" na parede do estúdio** e com o jeito alegre da Kristina.
+**A essência.** Um cartão de visita de luxo, assinado à mão. Refinada, delicada, pessoal. É a proposta que mais se parece com **receber uma carta escrita pela própria Kristina**.
 
-**A sensação que queremos transmitir.** Vitalidade, movimento, alegria. Um estúdio vivo, moderno, onde você vai para se sentir bem **e** se divertir.
+**A sensação que queremos transmitir.** Exclusividade e cuidado pessoal: um estúdio boutique, onde cada detalhe é pensado e cada cliente é recebida pelo nome.
 
 **Escolhas visuais e por quê:**
-- **"YOMA." em letras gigantes** ocupando a tela toda, com o ponto final em verde-menta: é a marca dita com confiança, como um cartaz. É impossível esquecer.
-- **Grade suíça**: seções numeradas (01 Lo Studio, 02 Corsi, 03 Massaggi…), linhas pretas finas, tudo alinhado. É uma homenagem ao design gráfico suíço, que tem tudo a ver com um estúdio no Ticino.
-- **As cores do arco-íris do quadro da Kristina** (menta, amarelo-sol, azul-céu, rosa, terracota), uma cor para cada prática e evento: transformam o lema "Radiate Positivity" em sistema visual. Um pequeno **arco-íris desenhado** aparece ao lado de "Il tempo per te".
-- **Letra sem serifa forte (Bricolage Grotesque)** + **letra de máquina de escrever (DM Mono)** para detalhes como preços e horários: moderna, direta, com um toque de caderno de anotações.
-- **Cartões com cantos bem arredondados e contorno preto**: amigáveis, quase lúdicos, lembram adesivos ou etiquetas.
+- **O logo recriado em tamanho gigante, só com tipografia**: "YOMA" em letra geométrica fina (Jost, da mesma família de desenho das letras do logo) em verde-menta, com a palavra **"time" escrita à mão por cima**, exatamente como no logo. A primeira coisa que a cliente vê é a marca, em grande e elegante.
+- **Tipografia com assinatura**: títulos em **Bodoni**, a letra clássica das revistas de moda e da alta perfumaria, e detalhes em **letra manuscrita** (Pinyon Script): "a te", "Prenditi il tuo tempo", os nomes dos eventos e uma palavra para cada prática (*respiro*, *equilibrio*, *forza*, *cura*). É o toque humano, como se a Kristina tivesse escrito à mão sobre a página.
+- **Fundo que muda de cor devagar**: manchas suaves de **menta, sálvia, champanhe e rosa antigo** que se misturam e se deslocam enquanto a página rola, com uma textura leve de papel por cima. Em vez de um fundo branco e parado, a página tem uma "aura", como a luz que muda ao longo do dia.
+- **Linhas finas cor de ouro envelhecido** separando conteúdos: acabamento de papelaria fina, sem peso.
+- **A seção da Kristina é uma carta**: começa com *"Cara amica,"*, conta a história dela e termina com a **assinatura "Kristina Dendena" escrita à mão**. É o momento mais pessoal do site.
 
 **Efeitos e por quê:**
-- **Faixa terracota correndo pela tela**, com "Radiate Positivity ✦ Il tempo per te": movimento contínuo, como um letreiro, que traz a energia do lema para a página.
-- **Cartão amarelo "Prima lezione gratis" que se inclina levemente ao passar o dedo**: um convite brincalhão para a aula experimental gratuita, o melhor argumento para atrair clientes novas.
-- **Preços em três colunas lado a lado** (Grupo · Reformer · Massagens): tudo visível de uma vez, fácil de comparar, sem cliques.
-- **Faixa de contato preta no topo** (endereço e WhatsApp) e **atalhos das seções que rolam para o lado** no celular: informação prática sempre à mão.
+- **Parallax** (camadas que se movem em velocidades diferentes ao rolar): no topo, as fotos do estúdio flutuam em volta do logo, cada uma no seu ritmo; nas práticas, **a foto de fundo anda mais devagar que o texto**, criando profundidade, como olhar por uma janela. O movimento é lento e suave, nunca brusco, e é desligado automaticamente para quem configurou o celular para reduzir movimento.
+- **Cada prática ocupa quase a tela inteira**, com foto grande e um cartão cor de marfim por cima: a cliente "entra" em cada experiência, uma de cada vez.
+- **Carta de massagens com a foto parada ao lado** enquanto a lista rola: parece um menu de spa de hotel.
+- **Galeria em colunas que andam em velocidades diferentes**: as fotos do estúdio parecem flutuar.
 
-**Para quem fala melhor.** Público mais jovem e ativo; quem vem pelo Pilates e pelo Reformer; famílias (há fotos de yoga com crianças); quem segue o estúdio no Instagram e gosta de uma marca com personalidade.
+**Para quem fala melhor.** Clientes que valorizam exclusividade e cuidado personalizado; massagens e Reformer individual; um público que escolhe pela qualidade e pela experiência completa.
 
-**Pontos de atenção.** É a mais ousada e a que mais se afasta do estilo "spa tradicional". Comunica energia mais do que relaxamento; para massagens e eventos meditativos, é menos introspectiva que a V2.
+**Pontos de atenção.** É a proposta mais "de luxo": transmite muito valor, mas deve estar alinhada com o posicionamento de preço do estúdio. Tem mais movimento que a V1, porém bem mais sutil que a V2.
 
 ---
 
 ## 5. Comparação lado a lado
 
-| | **V1 Luce** | **V2 Respiro** | **V3 Radiate** |
+| | **V1 Luce** | **V2 Respiro** | **V3 Firma** |
 |---|---|---|---|
-| Em uma palavra | Acolhimento | Imersão | Energia |
-| Parece… | uma revista de bem-estar | um spa ao entardecer | o quadro "Radiate Positivity" |
-| Cores | linho, areia, menta, madeira | verde-eucalipto escuro + menta | branco-papel, preto, menta + arco-íris |
-| Tipografia | serifada clássica e itálico | serifada alta e dramática | sem serifa forte + máquina de escrever |
-| Detalhe assinatura | fotos em arco (janelas do estúdio) | cartões que se empilham | "YOMA." gigante e faixa em movimento |
-| Movimento | quase nenhum, calmo | médio, sensorial | mais vivo e divertido |
-| Ponto mais forte | confiança e elegância | experiência e desejo | personalidade e memória |
-| Brilha mais em | massagens, yoga | massagens, eventos | Pilates, Reformer, público jovem |
+| Em uma palavra | Acolhimento | Imersão | Exclusividade |
+| Parece… | uma revista de bem-estar | um spa ao entardecer | uma carta assinada à mão |
+| Cores | linho, areia, menta, madeira | verde-eucalipto escuro + menta | marfim com menta, sálvia, champanhe e rosa antigo misturados |
+| Tipografia | serifada clássica e itálico | serifada alta e dramática | Bodoni + manuscrita + geométrica fina do logo |
+| Detalhe assinatura | fotos em arco (janelas do estúdio) | cartões que se empilham | logo gigante com "time" manuscrito e a assinatura da Kristina |
+| Movimento | quase nenhum, calmo | médio, sensorial | parallax lento e fundo que muda de cor |
+| Ponto mais forte | confiança e elegância | experiência e desejo | requinte e toque pessoal |
+| Brilha mais em | massagens, yoga | massagens, eventos | massagens, Reformer individual, clientes premium |
 
 ---
 
 ## 6. Perguntas para ajudar a Kristina a escolher
 
-1. Quando uma cliente nova abre o site, o que você quer que ela sinta primeiro: **calma** (V1), **vontade de se entregar a uma pausa** (V2) ou **energia e alegria** (V3)?
+1. Quando uma cliente nova abre o site, o que você quer que ela sinta primeiro: **calma** (V1), **vontade de se entregar a uma pausa** (V2) ou **exclusividade e um cuidado feito à mão** (V3)?
 2. Qual serviço você mais quer fazer crescer nos próximos meses: massagens, aulas de grupo ou Reformer?
 3. Qual das três parece mais **com você** e com o estúdio de verdade?
-4. Existe um detalhe de uma proposta que você gostaria de levar para outra? (Por exemplo, as fotos em arco da V1 com o botão fixo de WhatsApp da V2.) As propostas podem ser combinadas.
+4. Existe um detalhe de uma proposta que você gostaria de levar para outra? (Por exemplo, as fotos em arco da V1 com o botão fixo de WhatsApp da V2, ou a assinatura manuscrita da V3.) As propostas podem ser combinadas.
 
 **Próximo passo depois da escolha:** desenvolver a versão escolhida por completo, com fotos novas do estúdio, horários das aulas, sistema de reservas e o domínio yomatime.ch apontado para o site novo.

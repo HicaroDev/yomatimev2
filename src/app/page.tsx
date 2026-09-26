@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@/components/icons";
-import { bricolage, cormorant, dmMono, dmSans, instrument, manrope } from "./fonts";
+import { bodoni, cormorant, dmSans, instrument, jost, manrope, pinyon } from "./fonts";
 
 const versioni = [
   {
@@ -27,17 +27,17 @@ const versioni = [
   {
     href: "/v3",
     n: "V3",
-    nome: "Radiate",
-    idea: "Grafica e solare. Griglia svizzera, tipografia decisa e i colori del quadro “Radiate Positivity” appeso in studio.",
-    img: "/img/pilates-mat-2.jpg",
-    card: "bg-carta text-nero",
-    titolo: "font-[family-name:var(--font-bricolage)] font-extrabold tracking-tight",
-    colori: ["#fbfaf6", "#b8d4c6", "#d4704a", "#7f9ec6"],
+    nome: "Firma",
+    idea: "Raffinata e firmata. Il logo ricreato in grande con la scritta a mano, sfondi che sfumano menta, salvia e champagne, immagini in parallasse.",
+    img: "/img/massaggio-viso.jpg",
+    card: "bg-avorio text-notte",
+    titolo: "font-[family-name:var(--font-pinyon)] text-5xl",
+    colori: ["#faf7f2", "#b8d4c6", "#ecdfca", "#dcbcb1"],
   },
 ];
 
 export default function Scelta() {
-  const fonts = [cormorant, manrope, instrument, dmSans, bricolage, dmMono].map((f) => f.variable).join(" ");
+  const fonts = [cormorant, manrope, instrument, dmSans, jost, bodoni, pinyon].map((f) => f.variable).join(" ");
   return (
     <main className={`${fonts} min-h-dvh bg-sabbia px-4 py-8 text-inchiostro sm:px-8 sm:py-12 font-[family-name:var(--font-manrope)]`}>
       <header className="mx-auto flex max-w-6xl items-center justify-between gap-6">
@@ -74,7 +74,7 @@ export default function Scelta() {
                   sizes="(min-width:1024px) 33vw, 100vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                 />
-                <span className="absolute left-3 top-3 bg-white/90 px-2 py-1 font-[family-name:var(--font-dmmono)] text-xs text-nero">
+                <span className="absolute left-3 top-3 bg-white/90 px-2 py-1 text-xs tracking-widest text-inchiostro">
                   {v.n}
                 </span>
               </div>

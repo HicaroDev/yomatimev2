@@ -1,10 +1,11 @@
 import {
-  Bricolage_Grotesque,
+  Bodoni_Moda,
   Cormorant_Garamond,
-  DM_Mono,
   DM_Sans,
   Instrument_Serif,
+  Jost,
   Manrope,
+  Pinyon_Script,
 } from "next/font/google";
 
 // V1 · Luce
@@ -25,9 +26,12 @@ export const instrument = Instrument_Serif({
 });
 export const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dmsans" });
 
-// V3 · Radiate
-export const bricolage = Bricolage_Grotesque({
+// V3 · Firma — Jost é da mesma família geométrica do "YOMA" do logo;
+// Pinyon Script faz o papel do "time" manuscrito.
+export const jost = Jost({ subsets: ["latin"], weight: ["200", "300", "400", "500"], variable: "--font-jost" });
+export const bodoni = Bodoni_Moda({
   subsets: ["latin"],
-  variable: "--font-bricolage",
+  style: ["normal", "italic"],
+  variable: "--font-bodoni",
 });
-export const dmMono = DM_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-dmmono" });
+export const pinyon = Pinyon_Script({ subsets: ["latin"], weight: "400", variable: "--font-pinyon" });
