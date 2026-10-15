@@ -28,7 +28,19 @@ Peso de cada fase entre parênteses (soma = 100).
 - [ ] A.13 Avaliações reais (link Google Business ou 3–5 depoimentos) → seção "Dicono di noi"
 - [x] A.14 Selfies removidas (pedido 26/09); V1 com botão Prenota fixo + assinatura manuscrita
 - [x] A.15 Skill `/yoma-qa` criada e rodada: 13 telas × 3 viewports sem alertas + 16/16 testes de interação
-- [ ] A.11 Kristina escolhe a versão (V1 e V2 aprovadas pelo Hícaro, não mexer)
+- [x] A.11 Kristina escolhe a versão → **escolheu a V3 "Firma"** (14/10, por áudio). Pediu ajustes:
+  - [ ] A.16 Tirar os degradês (fundo aura menta/sálvia/champanhe/rosa) da V3
+  - [ ] A.17 Tirar/reduzir a tipografia manuscrita (assinatura "time"), deixar mais discreta/suave
+  - [ ] A.18 Deixar a V3 mais "semelhante" — revisar com ela se é parecida com V1/V2 ou com outra referência que ela tem em mente
+
+## ★ Sprint novo — Painel de controle + integração Magic Heidi (pedido 14/10, por áudio)
+- [x] A.19 Painel de controle simples em `/admin` (login por senha única + cookie assinado, protegido por `src/proxy.ts`)
+  - Edita: contatos, capa, Lo Studio, bio da Kristina (+ foto), práticas, massagens (preço/texto/foto), tabela de preços, eventos, fotos da capa/galeria, cores da V3
+  - Persistência: Upstash Redis (texto/preços/cores) + Vercel Blob (fotos) — **falta configurar na Vercel**, ver aviso abaixo
+  - Só a V3 está ligada ao painel por enquanto (V1/V2 continuam com o conteúdo estático de `yoma.ts`, sem "não mexer" quebrado)
+- [ ] A.20 Dentro do painel, ícone/atalho para acessar o sistema de gestão (Magic Heidi) com as melhorias da reunião de 07/10 — ainda não feito
+- [ ] A.21 Estudar a API/SaaS do Magic Heidi (app.magicheidi.ch) para entender o que dá pra integrar/embutir
+- [ ] A.22 Configurar na Vercel: Upstash Redis (env `KV_REST_API_URL`/`KV_REST_API_TOKEN`) + Vercel Blob (env `BLOB_READ_WRITE_TOKEN`) e `ADMIN_PASSWORD` — sem isso o painel funciona só em localhost (modo rascunho em `.data/`, não versionado)
 
 ## 1. Conteúdo e marca (12)
 - [x] 1.1 Extrair todos os textos das páginas atuais (Home, Lo Studio, Corsi, Reformer, Massaggi, Galleria, Contatti)

@@ -23,6 +23,15 @@
   --color-salvia: #56705f; /* ≥5:1 sobre avorio */
   --color-oro: #b39668;
   --color-notte: #2d2a26;
+
+  /* Tokens "semânticos" (shadcn-style) usados pelos componentes de /admin e /gestao.
+     Mapeados pra paleta da V3 em vez do cinza genérico padrão. */
+  --color-background: var(--color-avorio);
+  --color-foreground: var(--color-notte);
+  --color-muted: #ece6da;
+  --color-muted-foreground: #8a8071;
+  --color-border: #e3dccc;
+  --color-ring: var(--color-salvia);
 }
 
 @media (prefers-reduced-motion: reduce) {

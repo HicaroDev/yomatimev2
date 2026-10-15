@@ -2,9 +2,14 @@
 
 import { useState } from "react";
 import { Menu as IconaMenu } from "@/components/icons";
-import { nav, whatsappMsg } from "@/content/yoma";
 
-export default function Menu() {
+type Props = {
+  nav: { href: string; label: string }[];
+  whatsapp: string;
+};
+
+export default function Menu({ nav, whatsapp }: Props) {
+  const whatsappMsg = (testo: string) => `${whatsapp}?text=${encodeURIComponent(testo)}`;
   const [aperto, setAperto] = useState(false);
   return (
     <div className="relative lg:hidden">

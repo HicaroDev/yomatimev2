@@ -2,8 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
-// Fundo fixo: manchas de cor suaves (menta, sálvia, champanhe, rosa antigo)
-// que se deslocam devagar conforme a página rola, com grão de papel por cima.
+// Fundo fixo: avorio liso com uma única mancha de menta muito sutil
+// (pedido da Kristina: tirar o degradê multicolor, deixar mais suave)
+// e grão de papel por cima.
 export default function Aura() {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -24,25 +25,13 @@ export default function Aura() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const macchia = "absolute rounded-full blur-[90px] will-change-transform";
+  const macchia = "absolute rounded-full blur-[110px] will-change-transform";
 
   return (
     <div ref={ref} aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-avorio [--p:0]">
       <div
-        className={`${macchia} left-[-15%] top-[-10%] size-[70vmax] bg-menta/70`}
-        style={{ transform: "translate3d(calc(var(--p) * 30vw), calc(var(--p) * 60vh), 0)" }}
-      />
-      <div
-        className={`${macchia} right-[-20%] top-[10%] size-[60vmax] bg-champagne`}
-        style={{ transform: "translate3d(calc(var(--p) * -25vw), calc(var(--p) * 40vh), 0)" }}
-      />
-      <div
-        className={`${macchia} bottom-[-25%] left-[10%] size-[55vmax] bg-cipria/60`}
-        style={{ transform: "translate3d(calc(var(--p) * 20vw), calc(var(--p) * -50vh), 0)" }}
-      />
-      <div
-        className={`${macchia} bottom-[-10%] right-[-10%] size-[40vmax] bg-salvia/35`}
-        style={{ transform: "translate3d(calc(var(--p) * -15vw), calc(var(--p) * -30vh), 0)" }}
+        className={`${macchia} left-[-10%] top-[-15%] size-[65vmax] bg-menta/18`}
+        style={{ transform: "translate3d(calc(var(--p) * 15vw), calc(var(--p) * 25vh), 0)" }}
       />
       {/* grão de papel */}
       <svg className="absolute inset-0 size-full opacity-[0.18] mix-blend-multiply">

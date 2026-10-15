@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# painel admin — fallback local de dev (sem Redis/Blob configurados)
+/.data/
+/public/uploads/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
