@@ -24,7 +24,7 @@
   --color-oro: #b39668;
   --color-notte: #2d2a26;
 
-  /* Tokens "semânticos" (shadcn-style) usados pelos componentes de /admin e /gestao.
+  /* Tokens "semânticos" (shadcn-style) usados pelos componentes de /yomapanel e /yomadesk.
      Mapeados pra paleta da V3 em vez do cinza genérico padrão. */
   --color-background: var(--color-avorio);
   --color-foreground: var(--color-notte);
@@ -32,6 +32,69 @@
   --color-muted-foreground: #8a8071;
   --color-border: #e3dccc;
   --color-ring: var(--color-salvia);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+
+  /* "Luminescent Glass" — visual real do guia de estilo do Stitch escolhido pelo Hícaro
+     (16/10), aplicado só no YomaDesk/Painel/login/seletor — o site público continua na
+     paleta V3 acima. Ver modelo_site/.../luminescent_glass/DESIGN.md. */
+  --color-vidro: #f4f6f9; /* canvas */
+  --color-carmesim: #dc2626; /* acento primário — usado com moderação, só em CTA/foco/alerta */
+  --color-carmesim-escuro: #b91c1c; /* hover do acento */
+  --color-grafite: #0f172a; /* texto principal */
+  --color-grafite-suave: #475569; /* texto secundário */
+  --color-grafite-mudo: #94a3b8; /* texto mudo / placeholder */
+  --color-acento-azul: #005e8d; /* terciário do guia — variedade em chips/avatares */
+  --color-acento-indigo: #565e74; /* secundário do guia — variedade em chips/avatares */
+}
+
+/* Escopo do tema "vidro" (YomaDesk, Painel, login, seletor de destino) — sobrescreve só
+   os tokens semânticos usados pelos componentes dessas áreas, sem afetar o site público. */
+.vidro {
+  --color-background: var(--color-vidro);
+  --color-foreground: var(--color-grafite);
+  --color-muted: rgba(15, 23, 42, 0.04);
+  --color-muted-foreground: var(--color-grafite-mudo);
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-ring: var(--color-carmesim);
+}
+
+/* Réplica exata do `.glass-card`/input do mockup do Stitch (code.html), incluindo a
+   borda "dupla" (clara em cima/esquerda, escura embaixo/direita) que dá a sensação de
+   borda de vidro de verdade — uma borda lisa só não tem esse efeito. */
+.vidro-card {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: 0 8px 32px -4px rgba(15, 23, 42, 0.04), 0 2px 8px -2px rgba(15, 23, 42, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.95);
+  border-left: 1px solid rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  border-right: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.vidro-input {
+  height: 2.75rem; /* h-11, como no mockup — não h-9/h-10 */
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem; /* rounded-xl */
+  transition: all 0.15s;
+}
+.vidro-input:focus {
+  background: #fff;
+  border-color: var(--color-carmesim);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.15);
+  outline: none;
+}
+
+/* Ícones "YomaDesk / Swiss Enterprise" (17/10) — fonte de ícone usada nos mockups do
+   YomaDeskV2 (Despesas, Itens, Criar cliente, Gestão de faturas, Personalizar fatura),
+   carregada só dentro de /yomadesk via <link> no layout dessa área. */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 @media (prefers-reduced-motion: reduce) {

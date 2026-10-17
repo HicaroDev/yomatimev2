@@ -11,7 +11,7 @@ import {
   massaggi,
   studio,
   whatsappMsg,
-} from "@/content/yoma";
+} from "@/content/legacy";
 import { ArrowRight, Facebook, Instagram, Mail, Phone, Pin, WhatsApp } from "@/components/icons";
 import { dmSans, instrument } from "../fonts";
 import Menu from "./Menu";

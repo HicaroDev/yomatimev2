@@ -6,9 +6,16 @@ import { Menu as IconaMenu } from "@/components/icons";
 type Props = {
   nav: { href: string; label: string }[];
   whatsapp: string;
+  textos: {
+    menuApri: string;
+    menuChiudi: string;
+    menuMobileAriaLabel: string;
+    whatsappPrenota: string;
+    menuPrenotaWhatsapp: string;
+  };
 };
 
-export default function Menu({ nav, whatsapp }: Props) {
+export default function Menu({ nav, whatsapp, textos: d }: Props) {
   const whatsappMsg = (testo: string) => `${whatsapp}?text=${encodeURIComponent(testo)}`;
   const [aperto, setAperto] = useState(false);
   return (
@@ -17,7 +24,7 @@ export default function Menu({ nav, whatsapp }: Props) {
         type="button"
         aria-expanded={aperto}
         aria-controls="menu-v3"
-        aria-label={aperto ? "Chiudi il menu" : "Apri il menu"}
+        aria-label={aperto ? d.menuChiudi : d.menuApri}
         onClick={() => setAperto(!aperto)}
         className="flex size-11 cursor-pointer items-center justify-center"
       >
@@ -25,7 +32,7 @@ export default function Menu({ nav, whatsapp }: Props) {
       </button>
       <nav
         id="menu-v3"
-        aria-label="Menu mobile"
+        aria-label={d.menuMobileAriaLabel}
         hidden={!aperto}
         className="absolute right-0 top-13 w-64 border border-oro/40 bg-avorio p-5 shadow-xl shadow-notte/10"
       >
@@ -43,10 +50,10 @@ export default function Menu({ nav, whatsapp }: Props) {
           ))}
           <li>
             <a
-              href={whatsappMsg("Ciao Kristina, vorrei prenotare")}
+              href={whatsappMsg(d.whatsappPrenota)}
               className="mt-3 block border-t border-oro/40 pt-4 text-sm uppercase tracking-[0.25em] text-salvia"
             >
-              Prenota su WhatsApp
+              {d.menuPrenotaWhatsapp}
             </a>
           </li>
         </ul>

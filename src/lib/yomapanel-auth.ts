@@ -1,6 +1,10 @@
-// Autenticação simples do /admin: senha única (ADMIN_PASSWORD) + cookie assinado.
+// Autenticação simples do /yomapanel: senha única (ADMIN_PASSWORD) + cookie assinado.
 // Usa Web Crypto (funciona tanto no middleware/edge quanto em server actions).
 export const SESSION_COOKIE = "yoma_admin_session";
+export const PAINEL_LOCALE_COOKIE = "painel_locale";
+// Idioma da INTERFACE do /yomapanel e do /yomadesk (rótulos, botões, menus) — separado
+// do PAINEL_LOCALE_COOKIE, que é só o idioma do CONTEÚDO sendo editado no /yomapanel.
+export const SISTEMA_LOCALE_COOKIE = "sistema_locale";
 const DURACAO_MS = 1000 * 60 * 60 * 24 * 30; // 30 dias
 
 function segredo() {

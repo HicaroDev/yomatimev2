@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "*.public.blob.vercel-storage.com" }],
   },
   async redirects() {
-    return [{ source: "/v3", destination: "/", permanent: false }];
+    return [
+      { source: "/v3", destination: "/", permanent: false },
+      { source: "/yomapanel/login", destination: "/login", permanent: false },
+      { source: "/yomapanel/selecionar", destination: "/selecionar", permanent: false },
+    ];
   },
 };
 

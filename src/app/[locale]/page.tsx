@@ -1,11 +1,14 @@
+import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getContent } from "@/lib/content-store";
+import { LOCALES, type Locale } from "@/content/yoma";
+import { getSiteDicionario } from "@/dictionaries/site";
 import { ArrowRight, Facebook, Instagram, Mail, Phone, Pin, WhatsApp } from "@/components/icons";
-import { bodoni, jost, pinyon } from "./fonts";
-import Aura from "./Aura";
-import Menu from "./Menu";
-import Parallax from "./Parallax";
+import { bodoni, jost, pinyon } from "../fonts";
+import Aura from "../Aura";
+import Menu from "../Menu";
+import Parallax from "../Parallax";
 
 export const dynamic = "force-dynamic";
 
@@ -13,35 +16,48 @@ const serif = "font-[family-name:var(--font-bodoni)]";
 const firma = "font-[family-name:var(--font-pinyon)] font-normal";
 const occhiello = "text-[0.7rem] uppercase tracking-[0.35em] text-salvia";
 
-// Palavra manuscrita que acompanha cada prática.
-const parole: Record<string, string> = {
-  yoga: "respiro",
-  pilates: "equilibrio",
-  reformer: "forza",
-  massaggi: "cura",
-};
-
 function Filetto() {
   return <span aria-hidden className="mx-auto block h-12 w-px bg-oro/60" />;
 }
 
-export default async function Home() {
+function LocaleSwitcher({ atual }: { atual: Locale }) {
+  const rotas: Record<Locale, string> = { it: "/", en: "/en", pt: "/pt" };
+  return (
+    <ul className="flex justify-center gap-3 text-[0.68rem] uppercase tracking-[0.25em] text-notte/60">
+      {LOCALES.map((l) => (
+        <li key={l}>
+          <a href={rotas[l]} aria-current={l === atual ? "true" : undefined} className={l === atual ? "text-salvia" : "hover:text-salvia"}>
+            {l}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params;
+  if (!LOCALES.includes(localeParam as Locale)) notFound();
+  const locale = localeParam as Locale;
+
+  const d = getSiteDicionario(locale);
   const { avvertenzaMassaggi, contatti, discipline, eventi, galleria, hero, kristina, listini, massaggi, nav, studio, whatsappMsg, resolveImg } =
-    await getContent();
+    await getContent(locale);
+
   return (
     <div className={`${jost.variable} ${bodoni.variable} ${pinyon.variable} relative font-[family-name:var(--font-jost)] font-light text-notte`}>
       <Aura />
       <a href="#contenuto" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-avorio focus:p-2">
-        Vai al contenuto
+        {d.vaiAlContenuto}
       </a>
 
       {/* Cabeçalho */}
       <header className="fixed inset-x-0 top-0 z-40 border-b border-oro/25 bg-avorio/75 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 sm:px-8">
-          <Link href="#" aria-label="YomaTime, inizio pagina" className="flex items-center gap-3">
+          <Link href="#" aria-label={d.inizioPagina} className="flex items-center gap-3">
             <Image src="/img/logo.png" alt="" width={44} height={44} priority />
           </Link>
-          <nav aria-label="Principale" className="hidden lg:block">
+          <nav aria-label={d.navAriaLabel} className="hidden lg:block">
             <ul className="flex gap-9 text-[0.72rem] uppercase tracking-[0.28em]">
               {nav.map((n) => (
                 <li key={n.href}>
@@ -54,12 +70,22 @@ export default async function Home() {
           </nav>
           <div className="flex items-center gap-1">
             <a
-              href={whatsappMsg("Ciao Kristina, vorrei prenotare")}
+              href={whatsappMsg(d.whatsappPrenota)}
               className="hidden min-h-11 items-center border border-notte/70 px-6 text-[0.72rem] uppercase tracking-[0.28em] transition-colors hover:bg-notte hover:text-avorio sm:inline-flex"
             >
-              Prenota
+              {d.prenota}
             </a>
-            <Menu nav={nav} whatsapp={contatti.whatsapp} />
+            <Menu
+              nav={nav}
+              whatsapp={contatti.whatsapp}
+              textos={{
+                menuApri: d.menuApri,
+                menuChiudi: d.menuChiudi,
+                menuMobileAriaLabel: d.menuMobileAriaLabel,
+                whatsappPrenota: d.whatsappPrenota,
+                menuPrenotaWhatsapp: d.menuPrenotaWhatsapp,
+              }}
+            />
           </div>
         </div>
       </header>
@@ -93,13 +119,13 @@ export default async function Home() {
                 time
               </p>
             </div>
-            <p className="mt-6 text-[0.72rem] uppercase tracking-[0.5em]">Il tempo per te</p>
+            <p className="mt-6 text-[0.72rem] uppercase tracking-[0.5em]">{hero.motto}</p>
             <p className="mx-auto mt-8 max-w-md text-base leading-relaxed md:text-lg">{hero.sottotitolo}</p>
             <a
-              href={whatsappMsg("Ciao Kristina, vorrei prenotare una lezione di prova")}
+              href={whatsappMsg(d.whatsappLezioneProva)}
               className="mt-10 inline-flex min-h-12 items-center gap-3 bg-notte px-8 text-[0.72rem] uppercase tracking-[0.28em] text-avorio transition-colors hover:bg-salvia"
             >
-              Lezione di prova <ArrowRight className="size-4" />
+              {d.lezioneDiProva} <ArrowRight className="size-4" />
             </a>
           </Parallax>
         </section>
@@ -107,9 +133,9 @@ export default async function Home() {
         {/* Lo Studio — texto centrado, como uma carta de apresentação */}
         <section id="studio" className="scroll-mt-20 px-4 py-28 sm:py-36">
           <div className="mx-auto max-w-2xl text-center">
-            <p className={occhiello}>Lo Studio</p>
+            <p className={occhiello}>{d.loStudio}</p>
             <h2 className={`${serif} mt-6 text-4xl italic leading-tight text-salvia sm:text-6xl`}>
-              Uno spazio dedicato <em>a te</em>
+              {d.unoSpazioDedicato} <em>{d.aTe}</em>
             </h2>
             <Filetto />
             <div className="mt-10 space-y-6 text-lg leading-relaxed">
@@ -117,23 +143,23 @@ export default async function Home() {
                 <p key={p.slice(0, 24)}>{p}</p>
               ))}
             </div>
-            <p className={`${serif} mt-14 text-3xl italic leading-tight text-salvia sm:text-4xl`}>Prenditi il tuo tempo.</p>
-            <p className={`${serif} mt-3 text-xl italic`}>Respira, ascoltati, ritrova te stessa.</p>
+            <p className={`${serif} mt-14 text-3xl italic leading-tight text-salvia sm:text-4xl`}>{studio.citazione.split(". ")[0]}.</p>
+            <p className={`${serif} mt-3 text-xl italic`}>{studio.citazione.split(". ").slice(1).join(". ")}</p>
           </div>
         </section>
 
         {/* Práticas — faixas com foto de fundo em parallax */}
         <div id="corsi" className="scroll-mt-16">
-          {discipline.map((d, i) => (
+          {discipline.map((disc, i) => (
             <section
-              key={d.id}
-              id={d.id === "reformer" || d.id === "massaggi" ? d.id : undefined}
-              aria-labelledby={`t-${d.id}`}
+              key={disc.id}
+              id={disc.id === "reformer" || disc.id === "massaggi" ? disc.id : undefined}
+              aria-labelledby={`t-${disc.id}`}
               className="relative flex min-h-[92dvh] scroll-mt-16 items-center overflow-hidden px-4 py-20 sm:px-8"
             >
               <Parallax speed={0.18} className="absolute inset-x-0 -inset-y-[18%]">
                 <div className="relative size-full">
-                  <Image src={d.immagine} alt={d.alt} fill sizes="100vw" className="object-cover" />
+                  <Image src={disc.immagine} alt={disc.alt} fill sizes="100vw" className="object-cover" />
                 </div>
               </Parallax>
               <div className="absolute inset-0 bg-gradient-to-r from-notte/45 via-notte/10 to-transparent" />
@@ -141,18 +167,18 @@ export default async function Home() {
                 <article className="relative max-w-md border border-oro/50 bg-avorio/92 p-8 shadow-2xl shadow-notte/20 backdrop-blur-sm sm:p-12">
                   <p className={`${serif} text-sm italic text-salvia`}>N° {i + 1}</p>
                   <p aria-hidden className={`${occhiello} absolute -top-6 right-8 text-salvia/80`}>
-                    {parole[d.id]}
+                    {d.parole[disc.id]}
                   </p>
-                  <h3 id={`t-${d.id}`} className={`${serif} mt-3 text-4xl leading-none sm:text-5xl`}>
-                    {d.nome}
+                  <h3 id={`t-${disc.id}`} className={`${serif} mt-3 text-4xl leading-none sm:text-5xl`}>
+                    {disc.nome}
                   </h3>
-                  <p className={`${occhiello} mt-4`}>{d.sottotitolo}</p>
-                  <p className="mt-6 leading-relaxed">{d.testo}</p>
+                  <p className={`${occhiello} mt-4`}>{disc.sottotitolo}</p>
+                  <p className="mt-6 leading-relaxed">{disc.testo}</p>
                   <a
-                    href={whatsappMsg(`Ciao Kristina, vorrei informazioni su ${d.nome}`)}
+                    href={whatsappMsg(d.whatsappInfoDisciplina(disc.nome))}
                     className="mt-8 inline-flex min-h-11 items-center gap-3 border-b border-notte/60 text-[0.72rem] uppercase tracking-[0.28em]"
                   >
-                    Prenota <ArrowRight className="size-4" />
+                    {d.prenota} <ArrowRight className="size-4" />
                   </a>
                 </article>
               </div>
@@ -165,9 +191,9 @@ export default async function Home() {
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <div className="lg:sticky lg:top-28">
-                <p className={occhiello}>Carta dei massaggi</p>
+                <p className={occhiello}>{d.cartaDeiMassaggi}</p>
                 <h2 id="t-carta" className={`${serif} mt-5 text-4xl leading-tight sm:text-5xl`}>
-                  Il tuo momento di <em>benessere</em>
+                  {d.ilTuoMomento} <em>{d.benessere}</em>
                 </h2>
                 <div className="relative mt-10 hidden aspect-[4/5] overflow-hidden lg:block">
                   <Parallax speed={0.12} className="absolute inset-x-0 -inset-y-[12%]">
@@ -181,7 +207,7 @@ export default async function Home() {
             <div className="lg:col-span-6 lg:col-start-7">
               <ul>
                 {massaggi.map((m) => (
-                  <li key={m.nome} className="border-b border-oro/40 py-7 first:pt-0">
+                  <li key={m.id} className="border-b border-oro/40 py-7 first:pt-0">
                     <div className="flex items-baseline gap-3">
                       <h3 className={`${serif} text-2xl sm:text-3xl`}>{m.nome}</h3>
                       <span aria-hidden className="mb-1.5 flex-1 border-b border-dotted border-notte/30" />
@@ -190,7 +216,7 @@ export default async function Home() {
                     <p className="mt-1 text-[0.7rem] uppercase tracking-[0.3em] text-salvia">
                       {m.durata}
                       {m.preferito && (
-                        <span className={`${serif} ml-3 text-xs italic normal-case tracking-normal text-salvia`}>il preferito</span>
+                        <span className={`${serif} ml-3 text-xs italic normal-case tracking-normal text-salvia`}>{d.ilPreferito}</span>
                       )}
                     </p>
                     <p className="mt-3 max-w-lg leading-relaxed">{m.testo}</p>
@@ -213,7 +239,7 @@ export default async function Home() {
             <article className="border border-oro/40 bg-avorio px-6 pb-14 pt-28 shadow-2xl shadow-notte/10 sm:px-16 sm:pt-28">
               <p className={occhiello}>{kristina.ruolo}</p>
               <h2 id="t-kristina" className={`${firma} mt-6 text-5xl sm:text-6xl`}>
-                Cara amica,
+                {d.caraAmica}
               </h2>
               <div className={`${serif} mt-8 space-y-5 text-lg leading-relaxed`}>
                 {kristina.bio.map((p) => (
@@ -221,9 +247,9 @@ export default async function Home() {
                 ))}
               </div>
               <p className={`${serif} mt-8 text-lg italic`}>
-                Il mio motto? <span className="not-italic">“{kristina.motto}.”</span>
+                {d.ilMioMotto} <span className="not-italic">“{kristina.motto}.”</span>
               </p>
-              <p className={`${firma} mt-10 text-right text-6xl leading-none text-salvia sm:text-7xl`}>Kristina Dendena</p>
+              <p className={`${firma} mt-10 text-right text-6xl leading-none text-salvia sm:text-7xl`}>{kristina.nome}</p>
             </article>
           </div>
         </section>
@@ -231,13 +257,13 @@ export default async function Home() {
         {/* Eventos */}
         <section aria-labelledby="t-eventi" className="px-4 py-24 sm:px-8">
           <div className="mx-auto max-w-7xl text-center">
-            <p className={occhiello}>Eventi e serate</p>
+            <p className={occhiello}>{d.eventiESerate}</p>
             <h2 id="t-eventi" className={`${serif} mx-auto mt-5 max-w-3xl text-3xl leading-snug sm:text-4xl`}>
               {studio.eventi}
             </h2>
             <ul className="mt-14 grid gap-px bg-oro/40 sm:grid-cols-2 lg:grid-cols-4">
               {eventi.map((e) => (
-                <li key={e.nome} className="bg-avorio/80 px-6 py-10">
+                <li key={e.id} className="bg-avorio/80 px-6 py-10">
                   <h3 className={`${serif} text-2xl italic text-salvia`}>{e.nome}</h3>
                   <p className="mt-3 text-sm">{e.testo}</p>
                 </li>
@@ -250,9 +276,9 @@ export default async function Home() {
         <section id="prezzi" aria-labelledby="t-prezzi" className="scroll-mt-16 px-4 py-24 sm:px-8">
           <div className="mx-auto max-w-7xl">
             <div className="text-center">
-              <p className={occhiello}>Prezzi · CHF</p>
+              <p className={occhiello}>{d.prezziChf}</p>
               <h2 id="t-prezzi" className={`${serif} mt-5 text-4xl sm:text-5xl`}>
-                La prima lezione di gruppo <em>è un regalo</em>
+                {d.primaLezioneGratis1} <em>{d.primaLezioneGratis2}</em>
               </h2>
             </div>
             <div className="mt-14 grid gap-6 lg:grid-cols-3">
@@ -280,7 +306,7 @@ export default async function Home() {
         </section>
 
         {/* Galeria — colunas que andam em velocidades diferentes */}
-        <section aria-label="Galleria" className="overflow-hidden px-4 py-24 sm:px-8">
+        <section aria-label={d.galleriaAriaLabel} className="overflow-hidden px-4 py-24 sm:px-8">
           {[
             { n: 2, classe: "grid grid-cols-2 md:hidden", speeds: [0.06, -0.08] },
             { n: 3, classe: "hidden md:grid md:grid-cols-3", speeds: [0.05, -0.12, 0.1] },
@@ -303,8 +329,8 @@ export default async function Home() {
       {/* Contatos */}
       <footer id="contatti" className="scroll-mt-16 px-4 pb-10 pt-24 sm:px-8">
         <div className="mx-auto max-w-7xl border-t border-oro/50 pt-16 text-center">
-          <p className={`${serif} text-5xl italic text-salvia sm:text-6xl`}>A presto</p>
-          <p className={`${serif} mt-4 text-xl italic`}>Uno spazio in cui ti dedichi del tempo.</p>
+          <p className={`${serif} text-5xl italic text-salvia sm:text-6xl`}>{d.aPresto}</p>
+          <p className={`${serif} mt-4 text-xl italic`}>{d.unoSpazioUltimaRiga}</p>
           <ul className="mx-auto mt-14 grid max-w-4xl gap-6 text-left sm:grid-cols-2 lg:grid-cols-4">
             <li>
               <a href={contatti.mappa} className="flex gap-3">
@@ -333,14 +359,19 @@ export default async function Home() {
             </li>
           </ul>
           <div className="mt-10 flex justify-center gap-3">
-            <a href={contatti.instagram} aria-label="Instagram" className="flex size-11 items-center justify-center rounded-full border border-notte/40">
+            <a href={contatti.instagram} aria-label={d.instagramAriaLabel} className="flex size-11 items-center justify-center rounded-full border border-notte/40">
               <Instagram />
             </a>
-            <a href={contatti.facebook} aria-label="Facebook" className="flex size-11 items-center justify-center rounded-full border border-notte/40">
+            <a href={contatti.facebook} aria-label={d.facebookAriaLabel} className="flex size-11 items-center justify-center rounded-full border border-notte/40">
               <Facebook />
             </a>
           </div>
-          <p className="mt-14 text-xs text-notte/70">© 2026 YomaTime · {contatti.titolare}</p>
+          <p className="mt-14 text-xs text-notte/70">
+            {d.copyright} {contatti.titolare}
+          </p>
+          <div className="mt-6">
+            <LocaleSwitcher atual={locale} />
+          </div>
         </div>
       </footer>
     </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { listini } from "@/content/yoma";
+import { listini } from "@/content/legacy";
 
 export default function PrezziTabs() {
   const [attivo, setAttivo] = useState(listini[0].id);

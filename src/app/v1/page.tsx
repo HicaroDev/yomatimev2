@@ -13,7 +13,7 @@ import {
   nav,
   studio,
   whatsappMsg,
-} from "@/content/yoma";
+} from "@/content/legacy";
 import { ArrowRight, Facebook, Instagram, Mail, Menu, Phone, Pin, WhatsApp } from "@/components/icons";
 import { cormorant, manrope, pinyon } from "../fonts";
 import PrezziTabs from "./PrezziTabs";

@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# claude code — preferências locais de permissão (pessoal, não compartilhar)
+.claude/settings.local.json
+
 # painel admin — fallback local de dev (sem Redis/Blob configurados)
 /.data/
 /public/uploads/
@@ -44,3 +47,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 _ref/
+
+# prints do Magic Heidi (dados reais de clientes/faturas — nunca commitar)
+/img/
+
+# material de referência de design (prints + HTML do Stitch) — não é código do app
+/modelo_site/

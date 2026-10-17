@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { contatti, nav } from "@/content/yoma";
+import { contatti, nav } from "@/content/legacy";
 
 export default function Menu() {
   const [aperto, setAperto] = useState(false);

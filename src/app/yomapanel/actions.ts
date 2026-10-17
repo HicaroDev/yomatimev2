@@ -6,22 +6,59 @@ import { revalidatePath } from "next/cache";
 import { put } from "@vercel/blob";
 import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { criarSessao, senhaConfere, SESSION_COOKIE } from "@/lib/admin-auth";
+import { criarSessao, senhaConfere, SESSION_COOKIE, PAINEL_LOCALE_COOKIE, SISTEMA_LOCALE_COOKIE } from "@/lib/yomapanel-auth";
 import { getOverrides, saveOverrides, saveColors, setImage } from "@/lib/content-store";
-import { listini as listiniBase } from "@/content/yoma";
+import { listini as listiniBase, LOCALES, type Locale, type Texto, type TextoLista } from "@/content/yoma";
+
+function textoDe(formData: FormData, prefixo: string): Texto {
+  return {
+    it: String(formData.get(`${prefixo}_it`) ?? ""),
+    en: String(formData.get(`${prefixo}_en`) ?? ""),
+    pt: String(formData.get(`${prefixo}_pt`) ?? ""),
+  };
+}
+
+function textoListaDe(formData: FormData, prefixo: string): TextoLista {
+  const linhas = (s: string) =>
+    s
+      .split("\n")
+      .map((p) => p.trim())
+      .filter(Boolean);
+  return {
+    it: linhas(String(formData.get(`${prefixo}_it`) ?? "")),
+    en: linhas(String(formData.get(`${prefixo}_en`) ?? "")),
+    pt: linhas(String(formData.get(`${prefixo}_pt`) ?? "")),
+  };
+}
 
 function revalidarSite() {
   revalidatePath("/");
+  revalidatePath("/en");
+  revalidatePath("/pt");
   revalidatePath("/v1");
   revalidatePath("/v2");
-  revalidatePath("/admin");
+  revalidatePath("/yomapanel");
+}
+
+export async function definirIdiomaPainel(formData: FormData) {
+  const locale = String(formData.get("locale") ?? "it") as Locale;
+  if (!LOCALES.includes(locale)) return;
+  (await cookies()).set(PAINEL_LOCALE_COOKIE, locale, { maxAge: 60 * 60 * 24 * 365, path: "/" });
+}
+
+// Idioma da INTERFACE do /yomapanel e do /yomadesk (rótulos, menus, botões) — o
+// seletor fica embaixo da logo na sidebar dos dois painéis.
+export async function definirIdiomaSistema(formData: FormData) {
+  const locale = String(formData.get("locale") ?? "it") as Locale;
+  if (!LOCALES.includes(locale)) return;
+  (await cookies()).set(SISTEMA_LOCALE_COOKIE, locale, { maxAge: 60 * 60 * 24 * 365, path: "/" });
 }
 
 export async function login(formData: FormData) {
   const senha = String(formData.get("senha") ?? "");
-  const next = String(formData.get("next") ?? "/admin");
+  const next = String(formData.get("next") ?? "/selecionar");
   if (!senhaConfere(senha)) {
-    redirect(`/admin/login?erro=1&next=${encodeURIComponent(next)}`);
+    redirect(`/login?erro=1&next=${encodeURIComponent(next)}`);
   }
   const token = await criarSessao();
   (await cookies()).set(SESSION_COOKIE, token, {
@@ -36,7 +73,7 @@ export async function login(formData: FormData) {
 
 export async function logout() {
   (await cookies()).delete(SESSION_COOKIE);
-  redirect("/admin/login");
+  redirect("/login");
 }
 
 export async function salvarContatti(formData: FormData) {
@@ -50,41 +87,33 @@ export async function salvarContatti(formData: FormData) {
 export async function salvarHero(formData: FormData) {
   await saveOverrides({
     hero: {
-      titolo: String(formData.get("titolo") ?? ""),
-      sottotitolo: String(formData.get("sottotitolo") ?? ""),
-      motto: String(formData.get("motto") ?? ""),
+      titolo: textoDe(formData, "titolo"),
+      sottotitolo: textoDe(formData, "sottotitolo"),
+      motto: textoDe(formData, "motto"),
     },
   });
   revalidarSite();
 }
 
 export async function salvarStudio(formData: FormData) {
-  const paragrafi = String(formData.get("paragrafi") ?? "")
-    .split("\n")
-    .map((p) => p.trim())
-    .filter(Boolean);
   await saveOverrides({
     studio: {
-      titolo: String(formData.get("titolo") ?? ""),
-      eventi: String(formData.get("eventiTexto") ?? ""),
-      citazione: String(formData.get("citazione") ?? ""),
-      paragrafi,
+      titolo: textoDe(formData, "titolo"),
+      paragrafi: textoListaDe(formData, "paragrafi"),
+      eventi: textoDe(formData, "eventiTexto"),
+      citazione: textoDe(formData, "citazione"),
     },
   });
   revalidarSite();
 }
 
 export async function salvarKristina(formData: FormData) {
-  const bio = String(formData.get("bio") ?? "")
-    .split("\n")
-    .map((p) => p.trim())
-    .filter(Boolean);
   await saveOverrides({
     kristina: {
       nome: String(formData.get("nome") ?? ""),
-      ruolo: String(formData.get("ruolo") ?? ""),
-      motto: String(formData.get("motto") ?? ""),
-      bio,
+      ruolo: textoDe(formData, "ruolo"),
+      motto: textoDe(formData, "motto"),
+      bio: textoListaDe(formData, "bio"),
     },
   });
   revalidarSite();
@@ -98,9 +127,9 @@ export async function salvarDisciplina(formData: FormData) {
     discipline: {
       ...atual.discipline,
       [id]: {
-        nome: String(formData.get("nome") ?? ""),
-        sottotitolo: String(formData.get("sottotitolo") ?? ""),
-        testo: String(formData.get("testo") ?? ""),
+        nome: textoDe(formData, "nome"),
+        sottotitolo: textoDe(formData, "sottotitolo"),
+        testo: textoDe(formData, "testo"),
       },
     },
   });
@@ -108,17 +137,17 @@ export async function salvarDisciplina(formData: FormData) {
 }
 
 export async function salvarMassaggio(formData: FormData) {
-  const chave = String(formData.get("chave") ?? "");
-  if (!chave) return;
+  const id = String(formData.get("id") ?? "");
+  if (!id) return;
   const precoTxt = String(formData.get("prezzo") ?? "").trim();
   const atual = await getOverrides();
   await saveOverrides({
     massaggi: {
       ...atual.massaggi,
-      [chave]: {
+      [id]: {
         durata: String(formData.get("durata") ?? ""),
         prezzo: precoTxt ? Number(precoTxt) : null,
-        testo: String(formData.get("testo") ?? ""),
+        testo: textoDe(formData, "testo"),
       },
     },
   });
@@ -129,28 +158,38 @@ export async function salvarListino(formData: FormData) {
   const id = String(formData.get("id") ?? "");
   const base = listiniBase.find((l) => l.id === id);
   if (!base) return;
-  const voci = base.voci.map((v, i) => ({
-    nome: String(formData.get(`nome_${i}`) ?? v.nome),
-    prezzo: String(formData.get(`prezzo_${i}`) ?? v.prezzo),
-    nota: String(formData.get(`nota_${i}`) ?? v.nota),
+  const voci = base.voci.map((_, i) => ({
+    nome: textoDe(formData, `nome_${i}`),
+    prezzo: textoDe(formData, `prezzo_${i}`),
+    nota: textoDe(formData, `nota_${i}`),
   }));
-  const note = formData.get("note");
   const atual = await getOverrides();
   await saveOverrides({
     listini: {
       ...atual.listini,
-      [id]: { id: base.id, titolo: base.titolo, voci, ...(note ? { note: String(note) } : {}) },
+      [id]: { id: base.id, titolo: textoDe(formData, "titolo"), voci, note: textoDe(formData, "note") },
     },
   });
   revalidarSite();
 }
 
 export async function salvarEventi(formData: FormData) {
-  const nomes = formData.getAll("nome");
-  const textos = formData.getAll("testo");
-  const eventi = nomes
-    .map((nome, i) => ({ nome: String(nome), testo: String(textos[i] ?? "") }))
-    .filter((e) => e.nome.trim());
+  const ids = formData.getAll("id").map(String);
+  const nomesIt = formData.getAll("nome_it").map(String);
+  const nomesEn = formData.getAll("nome_en").map(String);
+  const nomesPt = formData.getAll("nome_pt").map(String);
+  const testosIt = formData.getAll("testo_it").map(String);
+  const testosEn = formData.getAll("testo_en").map(String);
+  const testosPt = formData.getAll("testo_pt").map(String);
+
+  const eventi = ids
+    .map((id, i) => ({
+      id: id || crypto.randomUUID(),
+      nome: { it: nomesIt[i] ?? "", en: nomesEn[i] ?? "", pt: nomesPt[i] ?? "" },
+      testo: { it: testosIt[i] ?? "", en: testosEn[i] ?? "", pt: testosPt[i] ?? "" },
+    }))
+    .filter((e) => e.nome.it.trim());
+
   await saveOverrides({ eventi });
   revalidarSite();
 }
