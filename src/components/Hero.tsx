@@ -28,7 +28,10 @@ export default function Hero({ linha1, accento, lead }: { linha1: string; accent
     let raf = 0;
     function aplicar() {
       raf = 0;
-      const p = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * TRECHO_SCROLL)));
+      // no celular (<=900px) o parallax fica desligado — camadas ficam paradas no estado de
+      // repouso (logo pequena, mulher e texto no lugar); só roda em tablet/desktop
+      const ehMobile = window.matchMedia("(max-width: 900px)").matches;
+      const p = ehMobile ? 0 : Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * TRECHO_SCROLL)));
       // texto e mulher terminam de sair em 80% do trecho — sobra só a logo depois disso
       const q = Math.min(1, p / 0.8);
       if (bgRef.current) {

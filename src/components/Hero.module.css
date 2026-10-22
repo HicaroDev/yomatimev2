@@ -126,7 +126,27 @@
         rgba(33, 56, 54, 0.78) 45%,
         rgba(33, 56, 54, 0.95) 100%);
   }
-  .womanLayer { width: 72%; right: -6%; }
+  .logoLayer {
+    top: 20px;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    width: 72%;
+    height: 140px;
+    margin-left: -36%;
+  }
+  .logoLayer img { object-fit: contain; }
+
+  .womanLayer {
+    left: 50%;
+    right: auto;
+    width: 52%;
+    margin-left: -26%;
+    bottom: 32%;
+    height: 38%;
+    z-index: 2;
+  }
+
   .inner {
     grid-template-columns: 1fr;
     padding: 110px 16px 40px;
