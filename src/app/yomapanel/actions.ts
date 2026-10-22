@@ -90,6 +90,8 @@ export async function salvarHero(formData: FormData) {
       titolo: textoDe(formData, "titolo"),
       sottotitolo: textoDe(formData, "sottotitolo"),
       motto: textoDe(formData, "motto"),
+      linha1: textoDe(formData, "linha1"),
+      accento: textoDe(formData, "accento"),
     },
   });
   revalidarSite();

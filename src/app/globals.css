@@ -17,7 +17,7 @@
   --color-crema: #efe9df;
 
   /* V3 · Firma */
-  --color-avorio: #faf7f2;
+  --color-avorio: #e2f5e1;
   --color-champagne: #ecdfca;
   --color-cipria: #dcbcb1;
   --color-salvia: #56705f; /* ≥5:1 sobre avorio */
@@ -32,6 +32,10 @@
   --color-muted-foreground: #8a8071;
   --color-border: #e3dccc;
   --color-ring: var(--color-salvia);
+  --color-primary: var(--color-salvia);
+  --color-primary-foreground: var(--color-avorio);
+  --color-secondary: var(--color-champagne);
+  --color-secondary-foreground: var(--color-notte);
 
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
 

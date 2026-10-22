@@ -9,6 +9,8 @@ import { bodoni, jost, pinyon } from "../fonts";
 import Aura from "../Aura";
 import Menu from "../Menu";
 import Parallax from "../Parallax";
+import Hero from "@/components/Hero";
+import { NotchedProjectCard } from "@/components/ui/notched-project-card";
 
 export const dynamic = "force-dynamic";
 
@@ -91,44 +93,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </header>
 
       <main id="contenuto">
-        {/* Hero — o logo recriado em tipografia, com camadas em parallax */}
-        <section className="relative flex min-h-dvh items-center justify-center overflow-hidden pt-16">
-          <Parallax speed={-0.18} className="absolute right-[6%] top-[13%] w-[27vw] max-w-60 md:left-[4%] md:right-auto md:top-[18%] md:w-[17vw]">
-            <div className="relative aspect-[3/4] overflow-hidden shadow-2xl shadow-notte/15">
-              <Image src={resolveImg("/img/studio-sala.jpg")} alt="" fill sizes="(min-width:768px) 17vw, 27vw" className="object-cover" />
-            </div>
-          </Parallax>
-          <Parallax speed={0.22} className="absolute bottom-[8%] right-[5%] w-[34vw] max-w-72 md:w-[19vw]">
-            <div className="relative aspect-[4/5] overflow-hidden shadow-2xl shadow-notte/15">
-              <Image src={resolveImg("/img/massaggio-hotstone.jpg")} alt="" fill sizes="(min-width:768px) 19vw, 34vw" className="object-cover" />
-            </div>
-          </Parallax>
-          <Parallax speed={0.4} className="absolute bottom-[12%] left-[6%] w-[26vw] max-w-44 md:bottom-[6%] md:left-[22%] md:w-[11vw]">
-            <div className="relative aspect-square overflow-hidden rounded-full shadow-xl shadow-notte/15">
-              <Image src={resolveImg("/img/pilates-mat-1.jpg")} alt="" fill sizes="(min-width:768px) 11vw, 26vw" className="object-cover" />
-            </div>
-          </Parallax>
-
-          <Parallax speed={0.08} className="relative z-10 px-4 text-center">
-            <h1 className="sr-only">{hero.titolo}</h1>
-            <div aria-hidden className="relative">
-              <p className="text-[29vw] font-extralight leading-none tracking-[0.06em] text-menta [text-shadow:0_1px_0_rgb(255_255_255/0.4)] md:text-[17vw] 2xl:text-[16rem]">
-                YOMA
-              </p>
-              <p className={`${firma} absolute inset-x-0 top-1/2 -translate-y-[42%] -rotate-3 text-[23vw] leading-none md:text-[12vw] 2xl:text-[11rem]`}>
-                time
-              </p>
-            </div>
-            <p className="mt-6 text-[0.72rem] uppercase tracking-[0.5em]">{hero.motto}</p>
-            <p className="mx-auto mt-8 max-w-md text-base leading-relaxed md:text-lg">{hero.sottotitolo}</p>
-            <a
-              href={whatsappMsg(d.whatsappLezioneProva)}
-              className="mt-10 inline-flex min-h-12 items-center gap-3 bg-notte px-8 text-[0.72rem] uppercase tracking-[0.28em] text-avorio transition-colors hover:bg-salvia"
-            >
-              {d.lezioneDiProva} <ArrowRight className="size-4" />
-            </a>
-          </Parallax>
-        </section>
+        {/* Hero — foto com parallax de 3 camadas (fundo, logo, mulher recortada) */}
+        <Hero linha1={hero.linha1} accento={hero.accento} lead={hero.sottotitolo} />
 
         {/* Lo Studio — texto centrado, como uma carta de apresentação */}
         <section id="studio" className="scroll-mt-20 px-4 py-28 sm:py-36">
@@ -165,10 +131,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <div className="absolute inset-0 bg-gradient-to-r from-notte/45 via-notte/10 to-transparent" />
               <div className={`relative mx-auto w-full max-w-7xl ${i % 2 ? "flex justify-end" : ""}`}>
                 <article className="relative max-w-md border border-oro/50 bg-avorio/92 p-8 shadow-2xl shadow-notte/20 backdrop-blur-sm sm:p-12">
-                  <p className={`${serif} text-sm italic text-salvia`}>N° {i + 1}</p>
-                  <p aria-hidden className={`${occhiello} absolute -top-6 right-8 text-salvia/80`}>
-                    {d.parole[disc.id]}
-                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className={`${serif} text-sm italic text-salvia`}>N° {i + 1}</p>
+                    <p aria-hidden className="text-[0.735rem] font-bold uppercase tracking-[0.35em] text-oro/30">
+                      {d.parole[disc.id]}
+                    </p>
+                  </div>
                   <h3 id={`t-${disc.id}`} className={`${serif} mt-3 text-4xl leading-none sm:text-5xl`}>
                     {disc.nome}
                   </h3>
@@ -249,7 +217,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               <p className={`${serif} mt-8 text-lg italic`}>
                 {d.ilMioMotto} <span className="not-italic">“{kristina.motto}.”</span>
               </p>
-              <p className={`${firma} mt-10 text-right text-6xl leading-none text-salvia sm:text-7xl`}>{kristina.nome}</p>
+              <p className={`${firma} mt-10 text-right text-6xl leading-none text-notte sm:text-7xl`}>{kristina.nome}</p>
             </article>
           </div>
         </section>
@@ -261,14 +229,24 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <h2 id="t-eventi" className={`${serif} mx-auto mt-5 max-w-3xl text-3xl leading-snug sm:text-4xl`}>
               {studio.eventi}
             </h2>
-            <ul className="mt-14 grid gap-px bg-oro/40 sm:grid-cols-2 lg:grid-cols-4">
-              {eventi.map((e) => (
-                <li key={e.id} className="bg-avorio/80 px-6 py-10">
-                  <h3 className={`${serif} text-2xl italic text-salvia`}>{e.nome}</h3>
-                  <p className="mt-3 text-sm">{e.testo}</p>
-                </li>
+            <div className="mt-14 grid gap-x-8 gap-y-14 text-left sm:grid-cols-3">
+              {[
+                { img: "/img/massaggio-hotstone.jpg", evento: eventi[0] },
+                { img: "/img/yoga-sala.jpg", evento: eventi[1] },
+                { img: "/img/yoga-lago.jpg", evento: eventi[2] },
+              ].map(({ img, evento: e }) => (
+                <NotchedProjectCard
+                  key={e.id}
+                  href="#eventi"
+                  title={e.nome}
+                  description={e.testo}
+                  image={img}
+                  imageAlt={e.nome}
+                  accent="#56705f"
+                  accentForeground="#faf7f2"
+                />
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 
@@ -283,7 +261,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
             <div className="mt-14 grid gap-6 lg:grid-cols-3">
               {listini.map((l) => (
-                <div key={l.id} className="border border-oro/50 bg-avorio/85 p-7 sm:p-9">
+                <div key={l.id} className="border border-oro/50 bg-[#fffdf9] p-7 sm:p-9">
                   <h3 className={`${serif} text-center text-2xl italic`}>{l.titolo}</h3>
                   <Filetto />
                   <ul className="mt-4">

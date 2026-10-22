@@ -40,6 +40,14 @@ export const hero = {
     pt: "Yoga, Pilates e Massagens para redescobrir energia, equilíbrio e bem-estar, dedicando a si mesma o tempo que merece.",
   } as Texto,
   motto: { it: "Il tempo per te", en: "Time for you", pt: "O tempo para você" } as Texto,
+  // Título da Hero nova (foto com parallax) — vem em duas partes pra destacar a última
+  // palavra ("te"/"you"/"você") numa fonte manuscrita, como no layout aprovado.
+  linha1: {
+    it: "Uno spazio dedicato a",
+    en: "A space dedicated to",
+    pt: "Um espaço dedicado a",
+  } as Texto,
+  accento: { it: "te", en: "you", pt: "você" } as Texto,
 };
 
 export const studio = {
