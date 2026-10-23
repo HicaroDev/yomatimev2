@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
+import { version as versaoApp } from "../../../package.json";
 import {
   BookOpen,
   CalendarDays,
@@ -272,6 +273,9 @@ export default async function AdminPage() {
               </button>
             </form>
           </div>
+          <span className="block px-3 pb-1 text-[10px] text-muted-foreground/70 group-data-[state=collapsed]/sidebar:hidden">
+            v{versaoApp}
+          </span>
         </AnimatedSidebarFooter>
         <AnimatedSidebarRail />
       </AnimatedSidebar>
@@ -329,9 +333,11 @@ export default async function AdminPage() {
 
         <Secao id="capa" titulo="Capa (Hero)">
           <form action={salvarHero} className="space-y-3">
-            <CampoIdioma idioma={idioma} prefixo="titolo" valores={hero.titolo} label="Título" />
+            <CampoIdioma idioma={idioma} prefixo="linha1" valores={hero.linha1} label="Título — primeira parte" />
+            <CampoIdioma idioma={idioma} prefixo="accento" valores={hero.accento} label="Título — palavra em destaque (ex: te / you / você)" />
             <CampoIdioma idioma={idioma} prefixo="sottotitolo" valores={hero.sottotitolo} label="Subtítulo" multiline rows={2} />
-            <CampoIdioma idioma={idioma} prefixo="motto" valores={hero.motto} label="Frase (motto)" />
+            <CampoIdioma idioma={idioma} prefixo="titolo" valores={hero.titolo} label="Título antigo (não usado na Hero atual — mantido por compatibilidade)" />
+            <CampoIdioma idioma={idioma} prefixo="motto" valores={hero.motto} label="Frase (motto) — não usada na Hero atual" />
             <button className={botao}>Salvar capa</button>
           </form>
         </Secao>

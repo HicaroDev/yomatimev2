@@ -20,7 +20,7 @@ const COLORS_KEY = "yoma:colors";
 
 export type ContentOverrides = {
   contatti?: Partial<typeof yoma.contatti>;
-  hero?: Partial<{ titolo: Texto; sottotitolo: Texto; motto: Texto }>;
+  hero?: Partial<{ titolo: Texto; sottotitolo: Texto; motto: Texto; linha1: Texto; accento: Texto }>;
   studio?: Partial<{ titolo: Texto; paragrafi: TextoLista; eventi: Texto; citazione: Texto }>;
   kristina?: Partial<{ nome: string; ruolo: Texto; motto: Texto; bio: TextoLista }>;
   discipline?: Record<string, Partial<Pick<Disciplina, "nome" | "sottotitolo" | "testo" | "immagine">>>;
@@ -178,6 +178,8 @@ export async function getContent(locale: Locale = LOCALE_PADRAO) {
     titolo: t(heroBase.titolo, locale),
     sottotitolo: t(heroBase.sottotitolo, locale),
     motto: t(heroBase.motto, locale),
+    linha1: t(heroBase.linha1, locale),
+    accento: t(heroBase.accento, locale),
   };
 
   const studioBase = { ...yoma.studio, ...overrides.studio };
