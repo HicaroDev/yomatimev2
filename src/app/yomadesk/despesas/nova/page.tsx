@@ -92,7 +92,13 @@ export default async function NovaDespesaPage() {
 
       <div className="grid flex-1 gap-6 px-4 py-6 sm:px-8 lg:grid-cols-[1fr_1.4fr]">
         <section className="space-y-4">
-          <h2 className="text-sm font-semibold text-grafite">{n.documentosTitulo}</h2>
+          <div className="flex items-center justify-between">
+            <h2 className="text-sm font-semibold text-grafite">{n.documentosTitulo}</h2>
+            <span className="inline-flex items-center gap-1 text-xs font-medium text-carmesim">
+              <MaterialIcon name="auto_awesome" className="text-[14px]" />
+              {n.ocrAutomatico}
+            </span>
+          </div>
           <ComprovanteInput
             titulo={n.digitalizeTitulo}
             texto={n.digitalizeTexto}

@@ -270,6 +270,7 @@ export type PainelDicionario = {
         recorrenciaUmaVez: string;
         botaoGuardar: string;
         documentosTitulo: string;
+        ocrAutomatico: string;
         digitalizeTitulo: string;
         digitalizeTexto: string;
         botaoGaleria: string;
@@ -602,6 +603,7 @@ export const PAINEL_DICIONARIOS: Record<Locale, PainelDicionario> = {
           recorrenciaUmaVez: "Una tantum",
           botaoGuardar: "Salva",
           documentosTitulo: "Documenti e ricevuta",
+          ocrAutomatico: "OCR svizzero automatico",
           digitalizeTitulo: "Allega la ricevuta",
           digitalizeTexto: "Carica qui un'immagine o un PDF della ricevuta per archiviarla insieme alla spesa.",
           botaoGaleria: "Galleria",
@@ -932,6 +934,7 @@ export const PAINEL_DICIONARIOS: Record<Locale, PainelDicionario> = {
           recorrenciaUmaVez: "One-time",
           botaoGuardar: "Save",
           documentosTitulo: "Documents & receipt",
+          ocrAutomatico: "Automatic Swiss OCR",
           digitalizeTitulo: "Attach the receipt",
           digitalizeTexto: "Upload an image or PDF of the receipt to keep it filed with this expense.",
           botaoGaleria: "Gallery",
@@ -1262,6 +1265,7 @@ export const PAINEL_DICIONARIOS: Record<Locale, PainelDicionario> = {
           recorrenciaUmaVez: "Uma vez",
           botaoGuardar: "Salvar",
           documentosTitulo: "Documentos e comprovante",
+          ocrAutomatico: "OCR Suíço Automático",
           digitalizeTitulo: "Anexe o comprovante",
           digitalizeTexto: "Envie uma imagem ou PDF do comprovante para guardar junto com a despesa.",
           botaoGaleria: "Galeria",

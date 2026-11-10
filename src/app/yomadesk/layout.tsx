@@ -16,6 +16,7 @@ import { logout } from "@/app/yomapanel/actions";
 import { bancoConfigurado, tabelaNaoExiste } from "@/lib/yomadesk/db";
 import { visaoGeral } from "@/lib/yomadesk/queries";
 import YomaDeskNav from "./YomaDeskNav";
+import { version as versaoApp } from "../../../package.json";
 
 // Contagens reais pros badges da sidebar — nunca números fictícios. Se o banco não
 // estiver configurado ainda ou faltarem as tabelas, os badges somem (undefined).
@@ -91,6 +92,9 @@ export default async function YomaDeskLayout({ children }: { children: React.Rea
                 </button>
               </form>
             </div>
+            <span className="block px-3 pb-1 text-[10px] text-muted-foreground/70 group-data-[state=collapsed]/sidebar:hidden">
+              v{versaoApp}
+            </span>
           </AnimatedSidebarFooter>
           <AnimatedSidebarRail />
         </AnimatedSidebar>
