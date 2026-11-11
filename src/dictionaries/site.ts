@@ -25,6 +25,10 @@ export type SiteDicionario = {
   primaLezioneGratis2: string;
   invito: string;
   primaLezioneGratuita: string;
+  orariTitolo: string;
+  orariAvviso: string;
+  mattina: string;
+  pomeriggio: string;
   galleriaAriaLabel: string;
   aPresto: string;
   unoSpazioUltimaRiga: string;
@@ -64,6 +68,10 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     primaLezioneGratis2: "corsi e trattamenti",
     invito: "Invito",
     primaLezioneGratuita: "La prima lezione di gruppo è gratuita",
+    orariTitolo: "Orari corsi",
+    orariAvviso: "Esempio dimostrativo · orari da confermare",
+    mattina: "Mattina",
+    pomeriggio: "Pomeriggio",
     galleriaAriaLabel: "Galleria",
     aPresto: "A presto",
     unoSpazioUltimaRiga: "Uno spazio in cui ti dedichi del tempo.",
@@ -101,6 +109,10 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     primaLezioneGratis2: "classes and treatments",
     invito: "Invitation",
     primaLezioneGratuita: "Your first group class is free",
+    orariTitolo: "Class schedule",
+    orariAvviso: "Demonstration example · schedule to be confirmed",
+    mattina: "Morning",
+    pomeriggio: "Afternoon",
     galleriaAriaLabel: "Gallery",
     aPresto: "See you soon",
     unoSpazioUltimaRiga: "A space where you take time for yourself.",
@@ -138,6 +150,10 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     primaLezioneGratis2: "aulas e tratamentos",
     invito: "Convite",
     primaLezioneGratuita: "A primeira aula em grupo é gratuita",
+    orariTitolo: "Horários das aulas",
+    orariAvviso: "Exemplo demonstrativo · horários a confirmar",
+    mattina: "Manhã",
+    pomeriggio: "Tarde",
     galleriaAriaLabel: "Galeria",
     aPresto: "Até breve",
     unoSpazioUltimaRiga: "Um espaço em que você dedica tempo a si mesma.",

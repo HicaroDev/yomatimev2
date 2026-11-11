@@ -18,6 +18,18 @@ const serif = "font-[family-name:var(--font-bodoni)]";
 const firma = "font-[family-name:var(--font-pinyon)] font-normal";
 const occhiello = "text-[0.7rem] uppercase tracking-[0.35em] text-salvia";
 
+// PLACEHOLDER DEMO: horários ilustrativos para novembro, dezembro e janeiro;
+// substituir pela grade real depois da confirmação da Kiki.
+const mesiOrari: Record<Locale, string[]> = {
+  it: ["Novembre", "Dicembre", "Gennaio"],
+  en: ["November", "December", "January"],
+  pt: ["Novembro", "Dezembro", "Janeiro"],
+};
+const fasceOrari = [
+  { giorni: "Lun · Mer · Ven", fascia: "07:00 – 08:00 · 08:00 – 09:00" },
+  { giorni: "Mar · Gio", fascia: "17:30 – 18:30 · 18:30 – 19:30" },
+];
+
 function Filetto() {
   return <span aria-hidden className="mx-auto block h-12 w-px bg-oro/60" />;
 }
@@ -72,8 +84,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </nav>
           <div className="flex items-center gap-1">
             <a
-              // TODO cliente: trocar #corsi pelo destino da grade de horários quando o material for enviado.
-              href="#corsi"
+              href="#orari"
               className="hidden min-h-11 items-center border border-notte/70 px-6 text-[0.72rem] uppercase tracking-[0.28em] transition-colors hover:bg-notte hover:text-avorio sm:inline-flex"
             >
               {d.orarioCorsi}
@@ -147,8 +158,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     {(disc.id === "yoga" || disc.id === "pilates") && (
                       <>
                         {" "}
-                        {/* TODO cliente: apontar este link para a grade de horários assim que ela for enviada. */}
-                        <a href="#corsi" className="font-medium text-salvia underline underline-offset-4">
+                        <a href="#orari" className="font-medium text-salvia underline underline-offset-4">
                           {d.orarioCorsi}
                         </a>
                       </>
@@ -168,6 +178,35 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
 
         {/* Carta dei massaggi — foto fixa ao lado, lista elegante */}
+        {/* PLACEHOLDER DEMO: esta grade é apenas um modelo para discussão com a Kiki. */}
+        <section id="orari" aria-labelledby="t-orari" className="scroll-mt-16 bg-[#fffdf9] px-4 py-24 sm:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="text-center">
+              <p className={occhiello}>{d.orariAvviso}</p>
+              <h2 id="t-orari" className={`${serif} mt-5 text-4xl sm:text-5xl`}>{d.orariTitolo}</h2>
+            </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {mesiOrari[locale].map((mese) => (
+                <article key={mese} className="border border-oro/50 bg-avorio p-6 shadow-sm shadow-notte/10 sm:p-8">
+                  <h3 className={`${serif} text-center text-3xl italic text-salvia`}>{mese}</h3>
+                  <div className="mt-6 space-y-5">
+                    <div>
+                      <p className={occhiello}>{d.mattina}</p>
+                      <p className="mt-2 text-sm font-medium">{fasceOrari[0].giorni}</p>
+                      <p className="text-sm text-notte/70">{fasceOrari[0].fascia}</p>
+                    </div>
+                    <div className="border-t border-oro/30 pt-5">
+                      <p className={occhiello}>{d.pomeriggio}</p>
+                      <p className="mt-2 text-sm font-medium">{fasceOrari[1].giorni}</p>
+                      <p className="text-sm text-notte/70">{fasceOrari[1].fascia}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section aria-labelledby="t-carta" className="px-4 py-28 sm:px-8">
           <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-12">
             <div className="lg:col-span-5">
@@ -277,8 +316,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   <h3 className={`${serif} text-center text-2xl italic`}>{l.titolo}</h3>
                   {l.id === "gruppo" && (
                     <>
-                      {/* TODO cliente: substituir pelo link da grade de horários quando o material chegar. */}
-                      <a href="#corsi" className="mt-3 block text-center text-xs uppercase tracking-[0.2em] text-salvia underline underline-offset-4">
+                      <a href="#orari" className="mt-3 block text-center text-xs uppercase tracking-[0.2em] text-salvia underline underline-offset-4">
                         {d.orarioCorsi}
                       </a>
                     </>
