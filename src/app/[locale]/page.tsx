@@ -300,6 +300,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </div>
               ))}
             </div>
+            <div className="mx-auto mt-12 max-w-xl border border-oro/60 bg-avorio px-7 py-6 text-center shadow-sm shadow-notte/10 sm:px-10">
+              <span className={`${firma} text-3xl text-salvia`}>{d.invito}</span>
+              <p className={`${serif} mt-2 text-2xl italic leading-tight sm:text-3xl`}>{d.primaLezioneGratuita}</p>
+            </div>
           </div>
         </section>
 

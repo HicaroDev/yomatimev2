@@ -23,6 +23,8 @@ export type SiteDicionario = {
   prezziChf: string;
   primaLezioneGratis1: string;
   primaLezioneGratis2: string;
+  invito: string;
+  primaLezioneGratuita: string;
   galleriaAriaLabel: string;
   aPresto: string;
   unoSpazioUltimaRiga: string;
@@ -60,6 +62,8 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     prezziChf: "Prezzi · CHF",
     primaLezioneGratis1: "Tariffe",
     primaLezioneGratis2: "corsi e trattamenti",
+    invito: "Invito",
+    primaLezioneGratuita: "La prima lezione di gruppo è gratuita",
     galleriaAriaLabel: "Galleria",
     aPresto: "A presto",
     unoSpazioUltimaRiga: "Uno spazio in cui ti dedichi del tempo.",
@@ -95,6 +99,8 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     prezziChf: "Prices · CHF",
     primaLezioneGratis1: "Rates",
     primaLezioneGratis2: "classes and treatments",
+    invito: "Invitation",
+    primaLezioneGratuita: "Your first group class is free",
     galleriaAriaLabel: "Gallery",
     aPresto: "See you soon",
     unoSpazioUltimaRiga: "A space where you take time for yourself.",
@@ -130,6 +136,8 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     prezziChf: "Preços · CHF",
     primaLezioneGratis1: "Preços",
     primaLezioneGratis2: "aulas e tratamentos",
+    invito: "Convite",
+    primaLezioneGratuita: "A primeira aula em grupo é gratuita",
     galleriaAriaLabel: "Galeria",
     aPresto: "Até breve",
     unoSpazioUltimaRiga: "Um espaço em que você dedica tempo a si mesma.",
