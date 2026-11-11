@@ -2,11 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { Manrope, Parisienne } from "next/font/google";
+import { Manrope, Pinyon_Script } from "next/font/google";
 import styles from "./Hero.module.css";
 
 const sans = Manrope({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-hero" });
-const script = Parisienne({ subsets: ["latin"], weight: "400", variable: "--font-script" });
+const script = Pinyon_Script({ subsets: ["latin"], weight: "400", variable: "--font-script" });
 
 // Velocidade de cada camada no parallax (vw deslocados ao fim do trecho de scroll) — fundo quase
 // parado, texto sai rápido pra esquerda e some, mulher sai rápido pra direita, logo só anda um

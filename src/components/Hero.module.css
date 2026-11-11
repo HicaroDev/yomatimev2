@@ -100,9 +100,9 @@
   letter-spacing: -0.035em;
 }
 .script {
-  font-family: var(--font-script, "Parisienne"), cursive;
+  font-family: var(--font-script, "Pinyon Script"), cursive;
   font-weight: 400;
-  font-size: 1.18em;
+  font-size: 1.22em;
   letter-spacing: 0;
   color: var(--sage);
   padding-right: 0.06em;
