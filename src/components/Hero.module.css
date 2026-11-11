@@ -1,7 +1,5 @@
 /* ===== YomaTime — Hero ===== */
 .hero {
-  --sage: #79c7ab;
-
   position: relative;
   min-height: 100svh;
   display: flex;
@@ -100,11 +98,12 @@
   letter-spacing: -0.035em;
 }
 .script {
-  font-family: var(--font-script, "Pinyon Script"), cursive;
-  font-weight: 400;
-  font-size: 1.22em;
+  font-family: var(--font-bodoni, Georgia), serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.12em;
   letter-spacing: 0;
-  color: var(--sage);
+  color: var(--color-cipria);
   padding-right: 0.06em;
 }
 
