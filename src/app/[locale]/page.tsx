@@ -192,7 +192,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     <div className="flex items-baseline gap-3">
                       <h3 className={`${serif} text-2xl sm:text-3xl`}>{m.nome}</h3>
                       <span aria-hidden className="mb-1.5 flex-1 border-b border-dotted border-notte/30" />
-                      <span className={`${serif} text-2xl tabular-nums`}>{m.prezzo ? m.prezzo : "—"}</span>
                     </div>
                     <p className="mt-1 text-[0.7rem] uppercase tracking-[0.3em] text-salvia">
                       {m.durata}
@@ -276,6 +275,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               {listini.map((l) => (
                 <div key={l.id} className="border border-oro/50 bg-[#fffdf9] p-7 sm:p-9">
                   <h3 className={`${serif} text-center text-2xl italic`}>{l.titolo}</h3>
+                  {l.id === "gruppo" && (
+                    <>
+                      {/* TODO cliente: substituir pelo link da grade de horários quando o material chegar. */}
+                      <a href="#corsi" className="mt-3 block text-center text-xs uppercase tracking-[0.2em] text-salvia underline underline-offset-4">
+                        {d.orarioCorsi}
+                      </a>
+                    </>
+                  )}
                   <Filetto />
                   <ul className="mt-4">
                     {l.voci.map((v) => (

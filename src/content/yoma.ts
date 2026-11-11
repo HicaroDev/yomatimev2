@@ -297,7 +297,8 @@ export const listini: Listino[] = [
     voci: [
       {
         nome: { it: "Lezione di prova", en: "Trial class", pt: "Aula experimental" },
-        prezzo: { it: "gratis", en: "free", pt: "gratuito" },
+        // TODO cliente: confirmar o preço/regra da aula experimental e eventual oferta com pacote.
+        prezzo: { it: "da confermare", en: "to be confirmed", pt: "a confirmar" },
         nota: { it: "prima volta", en: "first time", pt: "primeira vez" },
       },
       {
