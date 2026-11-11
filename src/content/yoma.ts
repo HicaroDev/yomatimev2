@@ -47,7 +47,7 @@ export const hero = {
     en: "A space dedicated to",
     pt: "Um espaço dedicado a",
   } as Texto,
-  accento: { it: "te", en: "you", pt: "você" } as Texto,
+  accento: { it: "TE", en: "YOU", pt: "VOCÊ" } as Texto,
 };
 
 export const studio = {

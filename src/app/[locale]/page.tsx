@@ -72,10 +72,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </nav>
           <div className="flex items-center gap-1">
             <a
-              href={whatsappMsg(d.whatsappPrenota)}
+              // TODO cliente: trocar #corsi pelo destino da grade de horários quando o material for enviado.
+              href="#corsi"
               className="hidden min-h-11 items-center border border-notte/70 px-6 text-[0.72rem] uppercase tracking-[0.28em] transition-colors hover:bg-notte hover:text-avorio sm:inline-flex"
             >
-              {d.prenota}
+              {d.orarioCorsi}
             </a>
             <Menu
               nav={nav}
@@ -100,8 +101,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <section id="studio" className="scroll-mt-20 px-4 py-28 sm:py-36">
           <div className="mx-auto max-w-2xl text-center">
             <p className={occhiello}>{d.loStudio}</p>
-            <h2 className={`${serif} mt-6 text-4xl italic leading-tight text-salvia sm:text-6xl`}>
-              {d.unoSpazioDedicato} <em>{d.aTe}</em>
+            <h2 className={`${serif} mt-6 text-5xl italic leading-tight text-salvia sm:text-7xl`}>
+              {d.unoSpazioDedicato} <em className={firma}>{d.aTe}</em>
             </h2>
             <Filetto />
             <div className="mt-10 space-y-6 text-lg leading-relaxed">
@@ -141,7 +142,19 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     {disc.nome}
                   </h3>
                   <p className={`${occhiello} mt-4`}>{disc.sottotitolo}</p>
-                  <p className="mt-6 leading-relaxed">{disc.testo}</p>
+                  <p className="mt-6 leading-relaxed">
+                    {disc.testo}
+                    {(disc.id === "yoga" || disc.id === "pilates") && (
+                      <>
+                        {" "}
+                        {/* TODO cliente: apontar este link para a grade de horários assim que ela for enviada. */}
+                        <a href="#corsi" className="font-medium text-salvia underline underline-offset-4">
+                          {d.orarioCorsi}
+                        </a>
+                      </>
+                    )}
+                    {disc.id === "reformer" && <span className="block mt-2 text-sm italic text-salvia">Su prenotazione</span>}
+                  </p>
                   <a
                     href={whatsappMsg(d.whatsappInfoDisciplina(disc.nome))}
                     className="mt-8 inline-flex min-h-11 items-center gap-3 border-b border-notte/60 text-[0.72rem] uppercase tracking-[0.28em]"

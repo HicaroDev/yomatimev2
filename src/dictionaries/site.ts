@@ -8,6 +8,7 @@ export type SiteDicionario = {
   inizioPagina: string;
   navAriaLabel: string;
   prenota: string;
+  orarioCorsi: string;
   lezioneDiProva: string;
   ilPreferito: string;
   caraAmica: string;
@@ -44,6 +45,7 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     inizioPagina: "YomaTime, inizio pagina",
     navAriaLabel: "Principale",
     prenota: "Prenota",
+    orarioCorsi: "Orario corsi",
     lezioneDiProva: "Lezione di prova",
     ilPreferito: "il preferito",
     caraAmica: "Cara amica,",
@@ -78,6 +80,7 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     inizioPagina: "YomaTime, back to top",
     navAriaLabel: "Main",
     prenota: "Book now",
+    orarioCorsi: "Class schedule",
     lezioneDiProva: "Trial class",
     ilPreferito: "the favourite",
     caraAmica: "Dear friend,",
@@ -112,6 +115,7 @@ export const siteDicionario: Record<Locale, SiteDicionario> = {
     inizioPagina: "YomaTime, início da página",
     navAriaLabel: "Principal",
     prenota: "Reservar",
+    orarioCorsi: "Horários das aulas",
     lezioneDiProva: "Aula experimental",
     ilPreferito: "o preferido",
     caraAmica: "Cara amiga,",
